@@ -26,14 +26,9 @@ const TaxiInLocationSection = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const locationRef = useRef<HTMLHeadingElement>(null);
 
-  useEffect(() => {
-    // Initialize visible images
-    updateVisibleImages(currentIndex);
-  }, []);
-
   const updateVisibleImages = (newIndex: number) => {
     const totalImages = originalCarousel.length;
-    let images = [];
+    const images: ImageData[] = [];
     
     // Add current image first
     images.push(originalCarousel[newIndex]);
@@ -46,6 +41,11 @@ const TaxiInLocationSection = () => {
     
     setVisibleImages(images);
   };
+
+  useEffect(() => {
+    // Initialize visible images
+    updateVisibleImages(currentIndex);
+  }, [currentIndex, updateVisibleImages]);
 
   const handleNext = () => {
     const imagesContainer = carouselRef.current;

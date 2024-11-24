@@ -6,7 +6,6 @@ import img3 from "./assets/img3.png";
 import type { StaticImageData } from "next/image";
 import React, { useEffect, useState, useRef } from 'react';
 import Image from "next/image";
-import { gsap } from 'gsap';
 
 interface ImageData {
   src: StaticImageData;
@@ -23,17 +22,23 @@ const TaxiInLocationSection = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleImages, setVisibleImages] = useState<ImageData[]>([]);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const locationRef = useRef<HTMLHeadingElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState<'next' | 'prev'>('next');
+
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+  const startTime = useRef<number>(0);
+
+  const minSwipeDistance = 50;
+  const transitionDuration = 300;
 
   const updateVisibleImages = (newIndex: number) => {
     const totalImages = originalCarousel.length;
     const images: ImageData[] = [];
     
-    // Add current image first
     images.push(originalCarousel[newIndex]);
     
-    // Add remaining images in order
     for (let i = 1; i < totalImages; i++) {
       const nextIndex = (newIndex + i) % totalImages;
       images.push(originalCarousel[nextIndex]);
@@ -42,133 +47,94 @@ const TaxiInLocationSection = () => {
     setVisibleImages(images);
   };
 
-  useEffect(() => {
-    // Initialize visible images
-    updateVisibleImages(currentIndex);
-  }, [currentIndex, updateVisibleImages]);
-
   const handleNext = () => {
-    const imagesContainer = carouselRef.current;
-    const locationText = locationRef.current;
-    if (!imagesContainer || !locationText) return;
-
-    const nextIndex = (currentIndex + 1) % originalCarousel.length;
-
-    // Animate the location text
-    gsap.to(locationText, {
-      y: -20,
-      opacity: 0,
-      duration: 0.3,
-      ease: "power2.inOut",
-      onComplete: () => {
-        gsap.set(locationText, { y: 20 });
-        gsap.to(locationText, {
-          y: 0,
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.inOut"
-        });
-      }
-    });
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setDirection('next');
     
-    // Animate the first image out
-    const firstImage = imagesContainer.children[0];
-    if (firstImage) {
-      gsap.to(firstImage, {
-        x: -100,
-        opacity: 0,
-        rotation: 0,
-        duration: 0.5,
-        ease: "power2.inOut",
-        onComplete: () => {
-          setCurrentIndex(nextIndex);
-          updateVisibleImages(nextIndex);
-        }
-      });
-    }
-
-    // Animate remaining images to take their new positions
-    Array.from(imagesContainer.children).slice(1).forEach((child, i) => {
-      gsap.to(child, {
-        x: i * -15,
-        y: i * 20,
-        rotation: i * -3,
-        duration: 0.5,
-        ease: "power2.inOut"
-      });
-    });
+    setTimeout(() => {
+      const nextIndex = (currentIndex + 1) % originalCarousel.length;
+      setCurrentIndex(nextIndex);
+      updateVisibleImages(nextIndex);
+      setIsAnimating(false);
+    }, transitionDuration);
   };
 
   const handlePrev = () => {
-    const imagesContainer = carouselRef.current;
-    const locationText = locationRef.current;
-    if (!imagesContainer || !locationText) return;
-
-    const prevIndex = (currentIndex - 1 + originalCarousel.length) % originalCarousel.length;
-
-    // Animate the location text
-    gsap.to(locationText, {
-      y: 20,
-      opacity: 0,
-      duration: 0.3,
-      ease: "power2.inOut",
-      onComplete: () => {
-        gsap.set(locationText, { y: -20 });
-        gsap.to(locationText, {
-          y: 0,
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.inOut"
-        });
-      }
-    });
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setDirection('prev');
     
-    // Animate the last image
-    const lastImage = imagesContainer.children[imagesContainer.children.length - 1];
-    if (lastImage) {
-      gsap.to(lastImage, {
-        x: 100,
-        opacity: 0,
-        rotation: 0,
-        duration: 0.5,
-        ease: "power2.inOut",
-        onComplete: () => {
-          setCurrentIndex(prevIndex);
-          updateVisibleImages(prevIndex);
-        }
-      });
-    }
+    setTimeout(() => {
+      const prevIndex = (currentIndex - 1 + originalCarousel.length) % originalCarousel.length;
+      setCurrentIndex(prevIndex);
+      updateVisibleImages(prevIndex);
+      setIsAnimating(false);
+    }, transitionDuration);
+  };
 
-    // Animate remaining images to take their new positions
-    Array.from(imagesContainer.children).slice(0, -1).forEach((child, i) => {
-      gsap.to(child, {
-        x: (i + 1) * -15,
-        y: (i + 1) * 20,
-        rotation: (i + 1) * -3,
-        duration: 0.5,
-        ease: "power2.inOut"
-      });
-    });
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (isAnimating) return;
+    touchStartX.current = e.touches[0].clientX;
+    startTime.current = Date.now();
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || isAnimating) return;
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging || isAnimating) return;
+    setIsDragging(false);
+    
+    const swipeDistance = touchEndX.current - touchStartX.current;
+    const swipeTime = Date.now() - startTime.current;
+    const swipeVelocity = Math.abs(swipeDistance) / swipeTime;
+    
+    if (Math.abs(swipeDistance) >= minSwipeDistance || swipeVelocity > 0.5) {
+      if (swipeDistance > 0) {
+        handlePrev();
+      } else {
+        handleNext();
+      }
+    }
   };
 
   useEffect(() => {
-    const imagesContainer = carouselRef.current;
-    if (!imagesContainer) return;
+    updateVisibleImages(currentIndex);
+  }, [currentIndex]);
 
-    // Set initial positions for the stacked images
-    Array.from(imagesContainer.children).forEach((child, i) => {
-      gsap.set(child, {
-        opacity: 1,
-        x: i * -15,
-        y: i * 20,
-        rotation: i * -3,
-        zIndex: visibleImages.length - i
-      });
-    });
-  }, [visibleImages]);
+  const getImageStyles = (index: number) => {
+    const baseStyles = {
+      transform: `translate(${index * -15}px, ${index * 20}px) rotate(${index * -3}deg)`,
+      transition: `all ${transitionDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+      opacity: 1,
+      zIndex: visibleImages.length - index,
+    };
+
+    if (isAnimating && index === 0) {
+      if (direction === 'next') {
+        return {
+          ...baseStyles,
+          transform: 'translate(-100px, 0) rotate(-10deg)',
+          opacity: 0,
+        };
+      } else {
+        return {
+          ...baseStyles,
+          transform: 'translate(100px, 0) rotate(10deg)',
+          opacity: 0,
+        };
+      }
+    }
+
+    return baseStyles;
+  };
 
   return (
-    <section className="h-screen flex flex-col items-center bg-black px-5 py-20">
+    <section className="flex flex-col items-center bg-black px-5 py-16">
       <div className="text-center mb-12">
         <h1 className="text-white text-3xl font-semibold font-inter text-center">
           Book a ride online with Aegean Taxi in the following locations
@@ -178,7 +144,8 @@ const TaxiInLocationSection = () => {
       <div className="flex items-center justify-between w-full max-w-3xl mb-10">
         <button 
           onClick={handlePrev}
-          className="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center hover:bg-gray-100 transition-colors"
+          disabled={isAnimating}
+          className="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center hover:bg-gray-100 transition-colors disabled:opacity-50"
         >
           <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -187,27 +154,36 @@ const TaxiInLocationSection = () => {
 
         <div className="relative mr-10 w-[250px] h-[260px] flex flex-col items-center">
           <h1 
-            ref={locationRef}
-            className="text-white ml-10 text-center text-2xl font-inter mb-4"
+            className={`text-white ml-10 text-center text-2xl font-inter mb-4 transition-all duration-300 ease-in-out ${
+              isAnimating 
+                ? direction === 'next'
+                  ? 'opacity-0 transform -translate-y-4'
+                  : 'opacity-0 transform translate-y-4'
+                : 'opacity-100 transform translate-y-0'
+            }`}
           >
             {visibleImages[0]?.location || ''}
           </h1>
           
           <div 
-            ref={carouselRef}
             className="relative ml-10 w-[200px] h-[210px]"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {visibleImages.map((item, index) => (
               <div
                 key={item.id}
-                className="absolute w-[230px] h-[240px]"
+                className="absolute w-[230px] h-[240px] touch-none select-none"
+                style={getImageStyles(index)}
               >
                 <Image
                   src={item.src}
                   alt={`Location ${index + 1}`}
                   width={230}
                   height={240}
-                  className="rounded-lg"
+                  className="rounded-lg pointer-events-none"
+                  draggable={false}
                 />
               </div>
             ))}
@@ -216,7 +192,8 @@ const TaxiInLocationSection = () => {
 
         <button 
           onClick={handleNext}
-          className="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center hover:bg-gray-100 transition-colors"
+          disabled={isAnimating}
+          className="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center hover:bg-gray-100 transition-colors disabled:opacity-50"
         >
           <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -224,7 +201,7 @@ const TaxiInLocationSection = () => {
         </button>
       </div>
 
-      <button className="mt-20 bg-white text-black text-lg font-semibold font-inter px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+      <button className="mt-12 bg-white text-black text-lg font-semibold font-inter px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
         Book Taxi
       </button>
     </section>

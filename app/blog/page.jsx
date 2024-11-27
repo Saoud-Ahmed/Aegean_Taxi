@@ -14,7 +14,7 @@ import CalendarIconBlack from "./assets/calendarB.png";
 import TimeIconWhite from "./assets/clockW.png";
 import CalenderIconWhite from "./assets/calendarW.png";
 import TimeIcon from "./assets/clock.png";
-import WhatsAppIcon from "./assets/whtasapp.png";
+import WhatsAppIcon from "./assets/whatsapp_btn.png";
 import ArrowIcon from "./assets/arrow.png";
 import ArrowIconBlack from "./assets/arrowB.png";
 import PopImg1 from "./assets/most_popular1.png";
@@ -163,9 +163,9 @@ const Blog = () => {
                       </a>
                     </li>
                   </ul>
-                  <button className="bg-green-500 text-white px-4 h-[60px] rounded-lg flex items-center space-x-2">
-                    <Image src={WhatsAppIcon} alt="WhatsApp" className="w-10 h-10" />
-                    <span>Contact us on WhatsApp</span>
+                  <button className="bg-green-500 text-white px-4 h-[60px] w-[200px] rounded-lg flex items-center space-x-2">
+                    <Image src={WhatsAppIcon} alt="WhatsApp" className="w-full h-full object-fill pt-1 pb-1" />
+                    
                   </button>
                 </div>
               </div>

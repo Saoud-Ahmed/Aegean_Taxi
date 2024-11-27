@@ -1,7 +1,7 @@
 //import TaxiSection from './components/TaxiLocationSection/TaxiLocationsSections';
 //import TaxiInLocationSection from './components/TaxiSection/TaxiSection';
 //import LandingPage from './components/LandingSection/LandingSection';
-import BlogPage from "./pages/BlogPage/blog";
+import BlogPage from "./blog/page";
 import Head from 'next/head'; // If using Next.js
 
 export default function HomePage() {

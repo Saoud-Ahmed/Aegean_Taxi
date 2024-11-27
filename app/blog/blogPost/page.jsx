@@ -18,7 +18,7 @@ import Twitter from "./assets/twitter.png";
 import Settings from "./assets/settings.png";
 import CodeSnippet from "./assets/codesnippet.png";
 import Diagram from "./assets/diagram.png";
-import Arrow from "./assets/arrowb.png";
+import Arrow from "./assets/arrowB.png";
 
 import PopImg1 from "./assets/most_popular1.png";
 import PopImg2 from "./assets/most_popular2.png";

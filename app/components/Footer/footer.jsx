@@ -334,8 +334,8 @@ const Footer = () => {
 
 
             {/* Divider Line */}
-          <div className="w-full border-t border-gray-300 mt-6 mb-6 pt-6">
-                            <div className="flex flex-col items-center bg-gray-100 text-black space-y-3">
+          <div className="w-full border-t border-white mt-6 mb-6 pt-6">
+                            <div className="flex flex-col items-center bg-white text-black space-y-3">
                         {/* Contact Us Button */}
                         <button className="bg-blue-500 text-white text-lg font-bold py-2  rounded-xl w-full">
                             Contact us
@@ -347,24 +347,21 @@ const Footer = () => {
                         </button>
 
                         {/* App Store Buttons */}
-                        <div className="flex flex-row space-x-4">
+                        <div className="flex flex-row space-x-1">
                             {/* Google Play Button */}
-                            <button className="w-40 bg-black p-1 rounded-xl">
+                            <button className="w-[50%] bg-black p-1 rounded-xl">
                             <Image
                             src={GooglePlay}
                             alt="Get it on Google Play"
-                            width={160}
-                            height={48}
                             />
                             </button>
                             {/* App Store Button */}
-                            <button className="w-40 bg-black p-1 rounded-xl">
+                            <button className="w-[50%] bg-black p-1 rounded-xl">
                             <Image
                                  src={AppleStore}
                                  alt="Download on the App Store"
-                                width={160}
-                                 height={48}
-                />
+                               
+                                  />
                             </button>
                         </div>
                         </div>

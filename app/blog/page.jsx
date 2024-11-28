@@ -163,7 +163,7 @@ const Blog = () => {
                       </a>
                     </li>
                   </ul>
-                  <button className="bg-[#52BA63] text-white px-4 h-[60px] w-[200px] rounded-lg flex items-center space-x-2">
+                  <button className="bg-[#52BA63] text-white px-1 h-[60px] w-[200px] rounded-lg flex items-center space-x-2">
                     <Image src={WhatsAppIcon} alt="WhatsApp" className="w-full h-full object-fill pt-1 pb-1" />
                     
                   </button>

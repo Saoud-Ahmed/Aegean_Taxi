@@ -21,7 +21,7 @@ import PopImg1 from "./assets/most_popular1.png";
 import PopImg2 from "./assets/most_popular2.png";
 import PopImg3 from "./assets/most_popular3.png";
 import PopImg4 from "./assets/most_popular4.png";
-
+import Footer from "../components/Footer/footer";
 
 
 
@@ -314,6 +314,8 @@ const Blog = () => {
           )}
         </div>
       </main>
+
+          <Footer/>
     </div>
   );
 };

@@ -6,6 +6,8 @@ import Image from "next/image";
 
 import { useRouter } from "next/navigation";
 
+
+
 // Image imports
 import SearchIcon from "./assets/search.png";
 import HamburgerIcon from "./assets/hamburger.png";

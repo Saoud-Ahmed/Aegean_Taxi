@@ -16,7 +16,6 @@ import WhatsAppLogo from "./assets/whatsappIcon2.png";
 import CallIcon from "./assets/phoneIcon.png";
 import Arrow from "./assets/arrow.png";
 import ArrowBlack from "./assets/arrow-black.png";
-import { PhoneCallIcon } from "lucide-react";
 
 
 

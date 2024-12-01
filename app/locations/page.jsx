@@ -1,282 +1,220 @@
-"use client";
-
-import React, { useState } from "react";
 import Image from "next/image";
-
-import HamgurgerIcon from "./assets/hamburger.png";
+import HamgurgerIcon from "./assets/hambugerIcon.png";
 import Logo from "./assets/logo.png";
 import AppleStore from "./assets/apple.png";
-import Maps from "./assets/Map.png";
 import Call from "./assets/call.png";
 import WhatsApp from "./assets/whatsapp.png";
-import AthensMap from "./assets/AthensMap.png";
-import ArrowRight from "./assets/arrow-forward.png";
-import ArrowBlue from "./assets/blue_arrow.png";
-import ArrowBlack from "./assets/black_arrow.png";
-import BlueArrowFront from "./assets/b_front_arrow.png";
-import WhiteArrowFront from "./assets/w-front-arrow.png";
+import StandardCar from "./assets/standard-car.png";
+import Van from "./assets/van-bus.png";
+import MiniVan from "./assets/mini-bus.png";
+import Background from "./assets/background.png";
+import PickUpIcon from "./assets/pickup.png";
+import DestinationIcon from "./assets/destination.png";
+import PersonIcon from "./assets/personIcon.png";
+import BagIcon from "./assets/bagIcon.png";
+import ClockIcon from "./assets/clockIcon.png";
 
 
 
-const LocationsPage = () => {
-  const locations = Array(20).fill({
-    name: "Athens",
-    mapPicture: AthensMap,
-    address: "Leoforos Vouliagmenis 58, Voula, 16673",
-    navigateLink: "#",
-    hours: "24/7",
-    phone: "+30 215 215 4000",
-    phoneLink: "tel:+302152154000",
-    email: "athens@aegeantaxi.com",
-    emailLink: "mailto:athens@aegeantaxi.com",
-    services: {
-      taxi: "#",
-      airportTransfers: "#",
-      portTransfers: "#",
-      tours: "#",
-      bookOnline: "#",
-    },
-    goToLink: "#",
-  });
+import WhyBookSection from "../components/Why_Book_Section/WhyBookSection";
+import TaxiCategories from "../components/TaxiCategoriesSection/TaxiCategories";
+import AdditionalServicesSection from "../components/AdditionalServicesSection/AdditionalServices";
+import BookingOptionsSection from "../components/BookingOptionsSection/BookingOptions";
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+const cars = [
+  {
+    name: "Standard",
+    imageSrc: StandardCar,
+    personCapacity: 4,
+    luggage: 3,
+    time: "5 min",
+    price: "€36",
+  },
+  {
+    name: "Van",
+    imageSrc: Van,
+    personCapacity: 7,
+    luggage: 5,
+    time: "12 min",
+    price: "€45",
+  },
+  {
+    name: "Mini Bus",
+    imageSrc: MiniVan,
+    personCapacity: 12,
+    luggage: 10,
+    time: "18 min",
+    price: "€60",
+  },
+];
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % locations.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? locations.length - 1 : prevIndex - 1
-    );
-  };
-
+const LocationPage = () => {
   return (
-    <div>
-      {/* Header Section */}
-      <header className="bg-black flex flex-row items-center justify-between px-8 py-2">
-        <button>
-          <Image
-            src={HamgurgerIcon}
-            alt="Menu"
-            width={24}
-            height={24}
-            className="h-6 w-6"
-          />
-        </button>
-
-        <div>
-          <Image src={Logo} alt="Aegean Taxi" width={120} height={32} className="h-8" />
-        </div>
-
-        <button className="ml-6 h-8 bg-white px-6 py-1 rounded-xl flex items-center">
-          <Image src={AppleStore} alt="App Store" className="w-full h-6" />
-        </button>
-      </header>
-
-      {/* Main Section */}
-      <main className="mx-8 my-6 flex flex-col">
-        <div className="flex flex-col items-center text-center">
-          <h1 className="text-2xl font-bold mb-6">
-            We are Local! Find us in the following locations
-          </h1>
-          <Image
-            src={Maps}
-            alt="Map showing locations"
-            width={600}
-            height={400}
-            className="my-6 w-full max-w-lg"
-          />
-          <p className="text-gray-600 text-medium">
-            You can find an Aegean Taxi in the following 20 locations. Click on
-            a location to find out about the services we offer in each island,
-            and also useful information about each location.
-          </p>
-        </div>
-      </main>
-
-      {/* Buttons Section */}
-      <div className="flex flex-row justify-between mt-6 w-full">
-        <button className="flex flex-col items-center justify-center w-36 h-20 bg-white rounded-xl text-black hover:bg-gray-100 transition-colors">
-          <Image src={Call} alt="Phone" width={46} height={36} className="mb-1" />
-          <span className="font-medium text-[10px]">Call</span>
-        </button>
-        <button className="flex items-center justify-center w-60 h-12 mt-1 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-colors">
-          <span className="text-sm">Book Online</span>
-        </button>
-        <button className="flex flex-col items-center justify-center w-36 h-20 bg-white rounded-xl text-black hover:bg-gray-100 transition-colors">
-          <Image
-            src={WhatsApp}
-            alt="WhatsApp"
-            width={50}
-            height={36}
-            className="mb-1"
-          />
-          <span className="font-medium text-[10px]">WhatsApp</span>
-        </button>
-      </div>
-
-     {/* Slider Section */}
-<div className="relative flex flex-col items-center mt-3 ">
-  <div className="relative w-full overflow-hidden">
-    <div
-      className="flex transition-transform duration-500 ease-in-out"
-      style={{
-        width: `${locations.length * 100}%`,
-        transform: `translateX(-${(currentIndex * 100) / locations.length}%)`,
-      }}
-    >
-      {locations.map((location, index) => (
-        <div
-          key={index}
-          className="inline-block w-full px-6 py-4"
-          style={{
-            width: `${100 / locations.length}%`,
-            float: "left",
-          }}
-        >
-          <div className="rounded-lg shadow-xl bg-white text-left p-4">
+    <div className="relative">
+      {/* Header and Text Section */}
+      <div
+        className="relative bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${Background.src})`,
+          height: "367px",
+        }}
+      >
+        {/* Header */}
+        <header className="flex items-center justify-between px-3 py-2">
+          <button>
             <Image
-              src={location.mapPicture}
-              alt={`${location.name} Map`}
-              width={300}
-              height={200}
-              className="mx-auto rounded-3xl"
+              src={HamgurgerIcon}
+              alt="Menu"
+              width={24}
+              height={24}
+              className="h-6 w-6"
             />
-
-            <div className="mx-6">
-            {/* Name Heading */}
-            <h2 className="text-lg font-bold mt-4">{location.name} (HQ)</h2>
-
-            {/* Address Section */}
-            <div className="flex flex-row justify-between items-start mt-2">
-              {/* Address Label Column */}
-              <div className="flex">
-                <p className=" text-[#646464] text-[13px]">Address:</p>
-              </div>
-
-              {/* Address and Navigate Link Column */}
-              <div className="flex flex-col text-[13px] ml-2">
-                <p className="text-[#646464]">{location.address}</p>
-                <a
-                  href={location.navigateLink}
-                  className="text-blue-500 flex items-center mt-2"
-                >
-                  Navigate
-                  <Image
-                    src={ArrowBlue}
-                    alt="Arrow"
-                    width={12}
-                    height={12}
-                    className="ml-1"
-                  />
-                </a>
-              </div>
-            </div>
-
-            {/* Hours */}
-            
-            <p className="text-[#646464] text-[13px] mt-2">
-                 Hours: <span className="ml-3">{location.hours}</span>
-                </p>
-
-
-            {/* Phone */}
-            <p className="text-[#646464] text-[13px] flex items-center mt-2">
-              Phone:&nbsp;
-              <a
-                href={location.phoneLink}
-                className="text-blue-500 underline ml-2"
-              >
-                {location.phone}
-              </a>
-            </p>
-
-            {/* Email */}
-            <p className="text-[#646464] text-[13px] flex items-center mt-2">
-              Email:&nbsp;
-              <a
-                href={location.emailLink}
-                className="text-[#646464] underline ml-3"
-              >
-                {location.email}
-              </a>
-            </p>
-
-            {/* Services Section */}
-            <div className="mt-4">
-              <h3 className="font-semibold text-base">Services</h3>
-              {Object.entries(location.services).map(([key, link]) => (
-                <a
-                  key={key}
-                  href={link}
-                  className={`flex items-center mt-1 text-[13px] ${
-                    key === "bookOnline"
-                      ? "text-blue-500 underline"
-                      : "text-[#646464] underline"
-                  }`}
-                >
-                  {key.charAt(0).toUpperCase() +
-                    key.slice(1).replace(/([A-Z])/g, " $1")}
-                   <Image
-                         src={key === "bookOnline" ? BlueArrowFront : ArrowBlack}
-                         alt="Arrow"
-                         width={12}
-                         height={12}
-                         className="ml-1"
-                    />
-                </a>
-              ))}
-            </div>
-
-            {/* Go to Link */}
-            <a
-              href={location.goToLink}
-              className="mt-4 inline-flex items-center px-4 py-2 bg-[#343434] text-white rounded-full font-bold text-sm"
-            >
-              Go to {location.name}
-              <Image
-                src={WhiteArrowFront}
-                alt="Arrow"
-                width={12}
-                height={12}
-                className="ml-2"
-              />
-            </a>
+          </button>
+          <div>
+            <Image
+              src={Logo}
+              alt="Aegean Taxi"
+              width={150}
+              height={25}
+              className="h-8 ml-2"
+            />
           </div>
-          </div>
+          <button className="ml-6 h-10 bg-white px-4 py-2 rounded-xl flex items-center border border-black">
+            <Image src={AppleStore} alt="App Store" className="w-full h-8" />
+          </button>
+        </header>
+
+        {/* Text Section */}
+        <div className="mx-4 my-10 text-[#174FCD]">
+          <h1 className="text-4xl font-bold leading-[1.3]">Your</h1>
+          <h1 className="text-4xl font-bold leading-[1.3]">Mykonos</h1>
+          <h1 className="text-4xl font-bold leading-[1.3]">taxi app</h1>
         </div>
-      ))}
-    </div>
-  </div>
+      
 
-        {/* Navigation Buttons */}
-<div className="flex items-center justify-end gap-4 w-full mt-4 px-6 mb-6">
-  {/* Previous Button */}
-  <button
-    onClick={handlePrev}
-    className="flex items-center justify-center h-10 w-10 bg-gray-200 rounded-full hover:bg-gray-300 transition-colors"
-  >
-    <Image src={ArrowRight} alt="Previous" width={14} height={14} className="rotate-180" />
-  </button>
-  
-  {/* Page Indicator */}
-  <span className="text-gray-600 text-center">
-    {currentIndex + 1}/{locations.length}
-  </span>
 
-  {/* Next Button */}
-  <button
-    onClick={handleNext}
-    className="flex items-center justify-center h-10 w-10 bg-gray-200 rounded-full hover:bg-gray-300 transition-colors"
-  >
-    <Image src={ArrowRight} alt="Next" width={14} height={14} />
-  </button>
-</div>
 
-      </div>
+
+
+            <div className="rounded-t-3xl mt-20 rounded-b-3xl bg-[#F5F5F7]">
+                  {/* Input Fields Section */}
+                  <div className=" border-gray-300 mx-8 pt-6 rounded-xl">
+                    <div className="flex flex-col gap-4">
+                      {/* Pick-Up Input */}
+                      <div className="relative">
+                        <label htmlFor="pickup" className="sr-only">
+                          Pick-up location
+                        </label>
+                        <input
+                          id="pickup"
+                          type="text"
+                          placeholder="Enter pick-up location"
+                          className="w-full p-4 border border-black rounded-lg pl-12"
+                        />
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                          <Image src={PickUpIcon} alt="Location Icon" width={16} height={16} />
+                        </div>
+                      </div>
+
+                      {/* Destination Input */}
+                      <div className="relative ">
+                        <label htmlFor="destination" className="sr-only">
+                          Destination
+                        </label>
+                        <input
+                          id="destination"
+                          type="text"
+                          placeholder="Enter destination"
+                          className="w-full p-4 border border-black rounded-lg pl-12"
+                        />
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                          <Image src={DestinationIcon} alt="Destination Icon" width={16} height={16} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                      {/* Slider Section */}
+                  <div className="flex mx-8 gap-4 overflow-x-auto mt-0">
+                    {cars.map((car, index) => (
+                      <div
+                        key={index}
+                        className="relative flex-shrink-0 w-40 h-60"
+                      >
+                      
+
+
+                        {/* Smaller Div for Card Content */}
+                        <div className="relative mt-8 border border-black rounded-3xl bg-[#E2E6E9] shadow-lg p-4 pl-10 z-0">
+                        <div className="absolute w-full -top-5 left-6 lex justify-center">
+                          <Image src={car.imageSrc} alt={car.name} width={120} height={70} />
+                        </div>
+                          <h3 className="text-lg pt-8  font-bold text-left">{car.name}</h3>
+
+                          <div className="text-sm text-gray-600">
+                            <div className="flex items-center  gap-5">
+                              <div className="flex items-center gap-1">
+                                <Image src={PersonIcon} alt="Person Icon" width={20} height={16} />
+                                <span>{car.personCapacity} </span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Image src={BagIcon} alt="Bag Icon" width={16} height={16} />
+                                <span>{car.luggage} </span>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center justify-left gap-2 mt-1">
+                              <Image src={ClockIcon} alt="Clock Icon" width={22} height={16} />
+                              <span>{car.time}</span>
+                            </div>
+                          </div>
+
+
+                          <div className="flex items-center justify-left gap-2 mt-1">
+                          <span className="font-light text-sm ">from</span> 
+                          <p className="font-bold text-lg  text-left"> {car.price}</p>  
+                          </div>
+                          
+                      </div>
+                      </div>
+                    ))}
+                  </div>
+
+
+
+                  {/* Buttons Section */}
+                  <div className="flex flex-row justify-between mt-2">
+                    <button className="flex flex-col items-center justify-center w-36 h-20 bg-transparent rounded-xl text-black hover:bg-gray-100">
+                      <Image src={Call} alt="Phone" width={46} height={36} className="mb-1" />
+                      <span className="font-medium text-[10px]">Call</span>
+                    </button>
+                    <button className="flex items-center mt-1 justify-center w-80 h-12 bg-[#174FCD] text-white rounded-xl font-bold hover:bg-blue-600">
+                      <span className="text-md">See prices & book</span>
+                    </button>
+                    <button className="flex flex-col items-center justify-center w-36 h-20 bg-transparent rounded-xl text-black hover:bg-gray-100">
+                      <Image src={WhatsApp} alt="WhatsApp" width={50} height={36} className="mb-1" />
+                      <span className="font-medium text-[10px]">WhatsApp</span>
+                    </button>
+                  </div>
+
+                    {/* Text Section */}
+                    <div className=" text-[#696C74] text-center pb-4">
+                      <h1 className="text-2xl font-bold leading-[1.1]">The fastest, cheapest</h1>
+                      <h1 className="text-2xl font-bold leading-[1.1]">and easiest way to book</h1>
+                      <h1 className="text-2xl font-bold leading-[1.1]">your taxi in Mykonos</h1>
+                    </div>
+
+
+                    
+            </div>
+            <WhyBookSection />
+            <TaxiCategories />
+            <AdditionalServicesSection/>
+            <BookingOptionsSection/>
+            <p>bhbh</p>
+        </div>
     </div>
   );
 };
 
-export default LocationsPage;
+export default LocationPage;

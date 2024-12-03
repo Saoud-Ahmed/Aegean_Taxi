@@ -3,7 +3,9 @@ import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import TaxiImage from "./assets/img2.png";
 import IconImg from "./assets/icon_img.png";
-import Arrow from "./assets/blue_arrow.png"; // Replace with actual image path
+import Arrow from "./assets/blue_arrow.png"; 
+import FrontArrow from "./assets/w-front-arrow.png"; 
+
 
 export default function WhyBookSection() {
   const cards = [
@@ -192,31 +194,44 @@ export default function WhyBookSection() {
         </div>
 
 
-        {/* Links Section */}
-                    <div className="mt-10 mx-8 ">
-            <a
-                href="#"
-                className="text-left px-6 text-white bg-blue-500 hover:bg-blue-600 font-semibold py-3 rounded-3xl"
-            >
-                Find out more about Mykonos
-            </a>
+                      {/* Links Section */}
+              <div className="mt-10 flex flex-col items-center">
+              <div className="flex justify-center mt-10">
+                  <button className="flex items-center gap-4 px-10 py-3 text-white bg-blue-500 hover:bg-blue-600 font-semibold rounded-3xl">
+                    {/* Button Text */}
+                    Find out more about Mykonos
+                    
+                    {/* Image */}
+                    <Image
+                      src={FrontArrow} 
+                      alt="Front Arrow Icon"
+                      width={20} // Adjust the width as needed
+                      height={20} // Adjust the height as needed
+                      className="object-contain"
+                    />
+                  </button>
+                </div>
 
-            <div className="flex items-center mt-4 px-6">
-                <a
-                href="#"
-                className="block text-left text-blue-500 underline"
-                >
-                Find us in Mykonos
-                </a>
-                <Image
-                src={Arrow}// Replace with your actual image path
-                alt="Find us icon"
-                className="ml-2"
-                width={20} // Adjust size as needed
-                height={20} // Adjust size as needed
-                />
-            </div>
-        </div>
+
+
+                {/* Secondary Link with Icon */}
+                <div className="flex items-center justify-center mt-4">
+                  <a
+                    href="#"
+                    className="block text-center text-blue-500 underline"
+                  >
+                    Find us in Mykonos
+                  </a>
+                  <Image
+                    src={Arrow} // Replace with your actual image path
+                    alt="Find us icon"
+                    className="ml-2"
+                    width={20} // Adjust size as needed
+                    height={20} // Adjust size as needed
+                  />
+                </div>
+              </div>
+
 
 
       </div>

@@ -20,6 +20,9 @@ import WhyBookSection from "../components/Why_Book_Section/WhyBookSection";
 import TaxiCategories from "../components/TaxiCategoriesSection/TaxiCategories";
 import AdditionalServicesSection from "../components/AdditionalServicesSection/AdditionalServices";
 import BookingOptionsSection from "../components/BookingOptionsSection/BookingOptions";
+import FAQsSection from "../components/FAQsSection/faqs"
+import BlogSection from "../components/BlogSection/blog";
+import TicketSection from "../components/TicketsSection/tickets";
 
 const cars = [
   {
@@ -92,11 +95,8 @@ const LocationPage = () => {
         </div>
       
 
-
-
-
-
-            <div className="rounded-t-3xl mt-20 rounded-b-3xl bg-[#F5F5F7]">
+ {/* Parent div  Section */}
+ <div className="rounded-t-3xl mt-20 rounded-b-3xl bg-[#F5F5F7]">
                   {/* Input Fields Section */}
                   <div className=" border-gray-300 mx-8 pt-6 rounded-xl">
                     <div className="flex flex-col gap-4">
@@ -135,7 +135,7 @@ const LocationPage = () => {
                   </div>
 
                       {/* Slider Section */}
-                  <div className="flex mx-8 gap-4 overflow-x-auto mt-0">
+                  <div className="flex mx-8 gap-4 overflow-x-auto mt-0 w-full">
                     {cars.map((car, index) => (
                       <div
                         key={index}
@@ -181,9 +181,12 @@ const LocationPage = () => {
                   </div>
 
 
+                  
+
+
 
                   {/* Buttons Section */}
-                  <div className="flex flex-row justify-between mt-2">
+                  <div className="flex flex-row justify-between mt-2 ">
                     <button className="flex flex-col items-center justify-center w-36 h-20 bg-transparent rounded-xl text-black hover:bg-gray-100">
                       <Image src={Call} alt="Phone" width={46} height={36} className="mb-1" />
                       <span className="font-medium text-[10px]">Call</span>
@@ -202,16 +205,17 @@ const LocationPage = () => {
                       <h1 className="text-2xl font-bold leading-[1.1]">The fastest, cheapest</h1>
                       <h1 className="text-2xl font-bold leading-[1.1]">and easiest way to book</h1>
                       <h1 className="text-2xl font-bold leading-[1.1]">your taxi in Mykonos</h1>
-                    </div>
-
-
-                    
+                    </div>    
             </div>
+            
             <WhyBookSection />
             <TaxiCategories />
             <AdditionalServicesSection/>
             <BookingOptionsSection/>
-            <p>bhbh</p>
+            <FAQsSection />
+            <BlogSection />
+            <TicketSection />
+            <p>vvh</p>
         </div>
     </div>
   );

@@ -8,8 +8,8 @@ import StandardCar from "./assets/standard-car.png";
 import Van from "./assets/van-bus.png";
 import MiniVan from "./assets/mini-bus.png";
 import Background from "./assets/background.png";
-import PickUpIcon from "./assets/pickup.png";
-import DestinationIcon from "./assets/destination.png";
+import PickUpIcon from "./assets/pickupicon.png";
+import DestinationIcon from "./assets/destination-icon.png";
 import PersonIcon from "./assets/personIcon.png";
 import BagIcon from "./assets/bagIcon.png";
 import ClockIcon from "./assets/clockIcon.png";
@@ -23,6 +23,9 @@ import BookingOptionsSection from "../components/BookingOptionsSection/BookingOp
 import FAQsSection from "../components/FAQsSection/faqs"
 import BlogSection from "../components/BlogSection/blog";
 import TicketSection from "../components/TicketsSection/tickets";
+import TestimonialSection from "../components/TestimonialSection/testimonial";
+import DriverSection from "../components/Driver Section/drivers";
+import FindUsSection from "../components/FindUsSsection/findus";
 
 const cars = [
   {
@@ -210,12 +213,18 @@ const LocationPage = () => {
             
             <WhyBookSection />
             <TaxiCategories />
-            <AdditionalServicesSection/>
+          
             <BookingOptionsSection/>
+            <TicketSection />
+            <AdditionalServicesSection/>
+            <TestimonialSection />
             <FAQsSection />
             <BlogSection />
-            <TicketSection />
-            <p>vvh</p>
+            
+           
+            <DriverSection />
+            <FindUsSection />
+            
         </div>
     </div>
   );

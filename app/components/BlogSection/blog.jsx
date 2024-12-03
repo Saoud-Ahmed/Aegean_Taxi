@@ -3,7 +3,7 @@ import TickIcon from "./assets/tick-icon.png"; // Replace with the actual path t
 
 export default function Blogs() {
   return (
-    <section className="my-10 py-10  bg-black">
+    <section className="py-10  bg-black">
       {/* Title and Description */}
       <div className="text-white mb-6 mx-8 my-5" >
         <h2 className="text-3xl font-bold text-[#067DF9]">Blog</h2>

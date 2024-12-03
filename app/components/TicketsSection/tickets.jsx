@@ -1,140 +1,157 @@
 import Image from "next/image";
 
+
+import AirportIcon from "./assets/airport.png";
+import PortIcon from "./assets/port.png";
+import LineArrow from "./assets/line-arrow.png";
+import ToIcon from "./assets/to-icon.png";
+import FromIcon from "./assets/from-icon.png";
+import DistanceIcon from "./assets/distance-icon.png";
+import PriceIcon from "./assets/price.png";
+
+
+
+
+
+
+
 const TaxiPrices = () => {
   // Array of ticket data
   const tickets = [
     {
-      from: { name: "Mykonos Airport", icon: "/airport-icon.png" },
-      to: { name: "Mykonos Port", icon: "/port-icon.png" },
-      distance: { km: "5 KM", duration: "15 MINS", arrow: "/dotted-line-arrow.png" },
+      from: { name: "Mykonos Airport", icon: AirportIcon },
+      to: { name: "Mykonos Port", icon: PortIcon },
+      distance: { km: "5 KM", duration: "15 MINS", arrow: LineArrow },
       price: { type: "ECON", amount: "€ 36" },
     },
     {
-      from: { name: "Mykonos Airport", icon: "/airport-icon.png" },
-      to: { name: "Mykonos Beach", icon: "/beach-icon.png" },
-      distance: { km: "7 KM", duration: "20 MINS", arrow: "/dotted-line-arrow.png" },
-      price: { type: "ECON", amount: "€ 40" },
-    },
-    {
-      from: { name: "Mykonos Port", icon: "/port-icon.png" },
-      to: { name: "Mykonos Town", icon: "/town-icon.png" },
-      distance: { km: "3 KM", duration: "10 MINS", arrow: "/dotted-line-arrow.png" },
-      price: { type: "ECON", amount: "€ 25" },
-    },
-    {
-      from: { name: "Mykonos Airport", icon: "/airport-icon.png" },
-      to: { name: "Super Paradise Beach", icon: "/paradise-icon.png" },
-      distance: { km: "8 KM", duration: "25 MINS", arrow: "/dotted-line-arrow.png" },
-      price: { type: "ECON", amount: "€ 50" },
-    },
+        from: { name: "Mykonos Airport", icon: AirportIcon },
+        to: { name: "Mykonos Port", icon: PortIcon },
+        distance: { km: "5 KM", duration: "15 MINS", arrow: LineArrow },
+        price: { type: "ECON", amount: "€ 36" },
+      },
+      {
+        from: { name: "Mykonos Airport", icon: AirportIcon },
+        to: { name: "Mykonos Port", icon: PortIcon },
+        distance: { km: "5 KM", duration: "15 MINS", arrow: LineArrow },
+        price: { type: "ECON", amount: "€ 36" },
+      },
+      {
+        from: { name: "Mykonos Airport", icon: AirportIcon },
+        to: { name: "Mykonos Port", icon: PortIcon },
+        distance: { km: "5 KM", duration: "15 MINS", arrow: LineArrow },
+        price: { type: "ECON", amount: "€ 36" },
+      },
   ];
 
   return (
     <section className="bg-white px-4 py-8 md:px-12">
       {/* Heading */}
-      <h1 className="text-center text-xl md:text-2xl font-bold">
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-          Mykonos taxi prices
-        </span>{" "}
-        and{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-          distance
-        </span>{" "}
-        for popular routes and hotspots
-      </h1>
+      <h1
+          className=" px-4 text-3xl font-bold leading-[1.1] bg-clip-text text-transparent"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #0000FF 0%, #46AFE0 28%, #9898E7 55%, #64429A 83%)",
+          }}
+        >
+          Mykonos taxi prices and distance for popular routes and hotspots
+        </h1>
 
       {/* Table */}
-      <div className="mt-6 border rounded-lg shadow-sm">
+      <div className="mt-6  rounded-lg shadow-sm">
         {/* Header */}
-        <div className="grid grid-cols-4 text-center bg-gray-100 font-semibold py-2 text-sm">
-          <div>
-            <Image
-              src="/from-icon.png"
-              alt="From Icon"
-              width={24}
-              height={24}
-              className="mx-auto"
-            />
-            <span>From</span>
-          </div>
-          <div>
-            <Image
-              src="/distance-icon.png"
-              alt="Distance Icon"
-              width={24}
-              height={24}
-              className="mx-auto"
-            />
-            <span>Distance</span>
-          </div>
-          <div>
-            <Image
-              src="/to-icon.png"
-              alt="To Icon"
-              width={24}
-              height={24}
-              className="mx-auto"
-            />
-            <span>To</span>
-          </div>
-          <div>
-            <Image
-              src="/price-icon.png"
-              alt="Price Icon"
-              width={24}
-              height={24}
-              className="mx-auto"
-            />
-            <span>Price</span>
-          </div>
-        </div>
+        <div className="grid grid-cols-4 text-center font-semibold py-2 text-sm mb-4">
+            <div className="flex flex-col items-center h-[40px] justify-center">
+                <Image
+                src={FromIcon}
+                alt="From Icon"
+                width={27}
+                height={22}
+                className="mx-auto"
+                />
+                <span className=" text-[#006FE1] font-bold">From</span>
+            </div>
+            <div className="flex flex-col items-center h-[40px] justify-center">
+                <Image
+                src={DistanceIcon}
+                alt="Distance Icon"
+                width={34}
+                height={34}
+                className="mx-auto"
+                />
+                <span className="mt-1 text-[#006FE1] font-bold">Distance</span>
+            </div>
+            <div className="flex flex-col items-center h-[40px] justify-center">
+                <Image
+                src={ToIcon}
+                alt="To Icon"
+                width={37}
+                height={36}
+                className="mx-auto"
+                />
+                <span className="mt-1 text-[#006FE1] font-bold">To</span>
+            </div>
+            <div className="flex flex-col items-center h-[40px] justify-center">
+                <Image
+                src={PriceIcon}
+                alt="Price Icon"
+                width={34}
+                height={34}
+                className="mx-auto"
+                />
+                <span className="mt-1 text-[#006FE1] font-bold">Price</span>
+            </div>
+            </div>
+
 
         {/* Rows */}
         {tickets.map((ticket, index) => (
           <div
             key={index}
-            className={`grid grid-cols-4 items-center text-center py-4 border-t text-sm ${
-              index % 2 === 0 ? "bg-white" : "bg-[#F1F1F1]"
+            className={`grid grid-cols-4 items-center w-full text-center py-4 border-t text-sm  rounded-xl ${
+              index % 2 === 0 ? "bg-[#F1F1F1]" : "bg-white"
             } shadow-sm`}
           >
             {/* From */}
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center text-left justify-right gap-1 ml-4">
+              
+              <span>{ticket.from.name}</span>
               <Image
                 src={ticket.from.icon}
                 alt={ticket.from.name}
                 width={24}
                 height={24}
               />
-              <span>{ticket.from.name}</span>
             </div>
 
             {/* Distance */}
             <div className="flex flex-col items-center">
-              <span className="text-blue-600 font-bold">{ticket.distance.km}</span>
+              <span className="text-[#174FCD] font-med text-sm">{ticket.distance.km}</span>
               <Image
                 src={ticket.distance.arrow}
                 alt="Dotted Arrow"
                 width={60}
                 height={10}
               />
-              <span>{ticket.distance.duration}</span>
+              <span className="text-[#174FCD] font-med" >{ticket.distance.duration}</span>
             </div>
 
             {/* To */}
-            <div className="flex items-center justify-center gap-2">
-              <Image
+            <div className="flex items-center text-left justify-center gap-2">
+            <Image
                 src={ticket.to.icon}
                 alt={ticket.to.name}
                 width={24}
                 height={24}
               />
               <span>{ticket.to.name}</span>
+              
             </div>
 
             {/* Price */}
             <div className="flex flex-col items-center">
               <span className="text-gray-500">{ticket.price.type}</span>
-              <span className="text-blue-600 font-bold text-lg">
+              <span className="text-[#174FCD] font-semibold text-lg">
                 {ticket.price.amount}
               </span>
             </div>

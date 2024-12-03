@@ -226,7 +226,7 @@ const SliderComponent = ({
       <div className="flex items-center gap-6">
         {/* Gradient Heading */}
         <h1
-          className="text-3xl font-bold leading-[1.1] bg-clip-text text-transparent"
+          className="text-3xl font-bold leading-[1.1] bg-clip-text text-transparent pr-4"
           style={{
             backgroundImage: gradientColors,
           }}
@@ -245,7 +245,7 @@ const SliderComponent = ({
         )}
       </div>
 
-      <p className="text-[#777777] mt-4 mb-4">
+      <p className="text-[#777777] mt-4 mb-4 pr-4">
         {descriptionText}
       </p>
 
@@ -282,7 +282,7 @@ const SliderComponent = ({
           {sliderData.map((_, index) => (
             <button
               key={index}
-              onClick={() => navigateToIndex(index)}
+             
               className={`
                 transition-all duration-300 ease-in-out 
                 ${activeIndex === index 
@@ -341,13 +341,13 @@ const BookingOptions = () => {
           className="text-3xl font-bold leading-[1.1] bg-clip-text text-transparent"
           style={{
             backgroundImage:
-              "linear-gradient(to right, #4C7F00 0%, #18C5AB 24%, #51B481 51%, #64429A 76%)",
+              "linear-gradient(to right, #0D55FB 0%, #04A1FC 24%, #755FE3 51%, #ECECEC 76%)",
           }}
         >
-          Mykonos Taxi Booking Options
+          Mykonos Taxi Booking options and process
         </h1>
         <p className="text-[#87908F] mt-4">
-          Follow these simple steps to download and register to book your Mykonos Taxi.
+        We made is easier to book your taxi ride in Mykonos! With 4 booking options available to choose from, and a simple process, you can enjoy your Mykonos holiday and leave the logistics to us!
         </p>
       </div>
 

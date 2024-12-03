@@ -184,7 +184,6 @@ export default function AdditionalServices() {
           {cards.map((_, index) => (
             <button
               key={index}
-              onClick={() => navigateToIndex(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ease-in-out cursor-pointer ${
                 activeIndex === index 
                   ? 'bg-black w-3 h-3' 

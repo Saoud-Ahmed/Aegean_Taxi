@@ -122,7 +122,7 @@ export default function WhyBookSection() {
   }, []);
 
   return (
-    <div className=" my-20 flex flex-col">
+    <div className=" my-20 flex flex-col bg-white">
       <div className="px-8">
         {/* Heading Section */}
         <div className="text-left pb-4">

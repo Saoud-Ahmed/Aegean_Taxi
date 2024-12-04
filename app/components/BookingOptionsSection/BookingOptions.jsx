@@ -173,13 +173,7 @@ const SliderComponent = ({
     setActiveIndex(Math.min(Math.max(newIndex, 0), sliderData.length - 1));
   };
 
-  // Handle manual navigation to a specific index
-  const navigateToIndex = (index) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft = index * cardWidth;
-      setActiveIndex(index);
-    }
-  };
+  
 
   // Drag functionality for desktop
   const handleMouseDown = (e) => {

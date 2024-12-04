@@ -123,13 +123,7 @@ export default function AdditionalServices() {
     }
   }, [isDragging]);
 
-  // Manual indicator navigation
-  const navigateToIndex = (index) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft = index * cardWidth;
-      setActiveIndex(index);
-    }
-  };
+  
 
   return (
     <div className="my-20 flex flex-col">

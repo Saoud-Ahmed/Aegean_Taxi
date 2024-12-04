@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 
-import AthensMap from "./assets/AthensMap.png";
+import AthensMap from "./assets/map.png";
 import ArrowBlue from "./assets/blue_arrow.png";
 import WhiteArrowFront from "./assets/w-front-arrow.png";
 import BlueArrowFront from "./assets/b_front_arrow.png";

@@ -8,7 +8,7 @@ import ArrowBlue from "./assets/blue_arrow.png";
 import WhiteArrowFront from "./assets/w-front-arrow.png";
 import BlueArrowFront from "./assets/b_front_arrow.png";
 import ArrowBlack from "./assets/black_arrow.png";
-import { FullscreenIcon } from "lucide-react";
+
 
 const FindUs = () => {
   const location = {

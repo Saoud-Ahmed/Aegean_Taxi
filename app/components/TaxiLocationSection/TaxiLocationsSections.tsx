@@ -1,99 +1,89 @@
 "use client";
 
-import img1 from "./assets/img1.png";
-import img2 from "./assets/img2.png";
-import img3 from "./assets/img3.png";
-import type { StaticImageData } from "next/image";
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 
-interface ImageData {
-  src: StaticImageData;
-  location: string;
-  id: number;
-}
+import PersonImg from "./assets/person-img.png";
+import Star from "./assets/star.png";
+import CalenderIcon from "./assets/calender.png";
+import TrustPilot from "./assets/trustpilot.png";
+import TripAdvisor from "./assets/tripadvisor.png";
 
-const TaxiInLocationSection = () => {
-  const originalCarousel: ImageData[] = [
-    { src: img1, location: 'Mykonos', id: 1 },
-    { src: img2, location: 'Athens', id: 2 },
-    { src: img3, location: 'Santorini', id: 3 }
-  ];
+// Feedback Data
+const feedbacks = [
+  {
+    img: PersonImg,
+    name: "Emily Johnson",
+    bgColor: "#B1B0B0",
+    stars: 5,
+    feedback: "We have used the app several times, We have used the app several times We have used the app several times",
+    date: "May 2024",
+  },
+  {
+    img: PersonImg,
+    name: "Emily Johnson",
+    bgColor: "#7E7E7E",
+    stars: 5,
+    feedback: "We have used the app several times, We have used the app several times We have used the app several times",
+    date: "May 2024",
+  },
+  {
+    img: PersonImg,
+    name: "Sophia Brown",
+    bgColor: "#D9D9D9",
+    stars: 4,
+    feedback: "We have used the app several times, We have used the app several times We have used the app several times",
+    date: "June 2024",
+  },
+  {
+    img: PersonImg,
+    name: "Matt Williams",
+    bgColor: "#4DADE1",
+    stars: 5,
+    feedback: "We have used the app several times, We have used the app several times We have used the app several times",
+    date: "July 2024",
+  },
+];
 
+const Testimonial: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleImages, setVisibleImages] = useState<ImageData[]>([]);
-  const [isDragging, setIsDragging] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [direction, setDirection] = useState<'next' | 'prev'>('next');
-
-  const touchStartX = useRef<number>(0);
-  const touchEndX = useRef<number>(0);
-  const startTime = useRef<number>(0);
-
+  const [direction, setDirection] = useState<"next" | "prev">("next");
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
   const minSwipeDistance = 50;
-  const transitionDuration = 300;
-
-  const updateVisibleImages = (newIndex: number) => {
-    const totalImages = originalCarousel.length;
-    const images: ImageData[] = [];
-    
-    images.push(originalCarousel[newIndex]);
-    
-    for (let i = 1; i < totalImages; i++) {
-      const nextIndex = (newIndex + i) % totalImages;
-      images.push(originalCarousel[nextIndex]);
-    }
-    
-    setVisibleImages(images);
-  };
 
   const handleNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setDirection('next');
-    
+    setDirection("next");
     setTimeout(() => {
-      const nextIndex = (currentIndex + 1) % originalCarousel.length;
-      setCurrentIndex(nextIndex);
-      updateVisibleImages(nextIndex);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % feedbacks.length);
       setIsAnimating(false);
-    }, transitionDuration);
+    }, 300); // Animation duration
   };
 
   const handlePrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setDirection('prev');
-    
+    setDirection("prev");
     setTimeout(() => {
-      const prevIndex = (currentIndex - 1 + originalCarousel.length) % originalCarousel.length;
-      setCurrentIndex(prevIndex);
-      updateVisibleImages(prevIndex);
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + feedbacks.length) % feedbacks.length);
       setIsAnimating(false);
-    }, transitionDuration);
+    }, 300); // Animation duration
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (isAnimating) return;
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = e.touches[0].clientX;
-    startTime.current = Date.now();
-    setIsDragging(true);
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || isAnimating) return;
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     touchEndX.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = () => {
-    if (!isDragging || isAnimating) return;
-    setIsDragging(false);
-    
     const swipeDistance = touchEndX.current - touchStartX.current;
-    const swipeTime = Date.now() - startTime.current;
-    const swipeVelocity = Math.abs(swipeDistance) / swipeTime;
-    
-    if (Math.abs(swipeDistance) >= minSwipeDistance || swipeVelocity > 0.5) {
+    if (Math.abs(swipeDistance) >= minSwipeDistance) {
       if (swipeDistance > 0) {
         handlePrev();
       } else {
@@ -102,110 +92,113 @@ const TaxiInLocationSection = () => {
     }
   };
 
-  useEffect(() => {
-    updateVisibleImages(currentIndex);
-  }, [currentIndex]);
-
-  const getImageStyles = (index: number) => {
-    const baseStyles = {
-      transform: `translate(${index * -15}px, ${index * 20}px) rotate(${index * -3}deg)`,
-      transition: `all ${transitionDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`,
-      opacity: 1,
-      zIndex: visibleImages.length - index,
+  const getCardStyle = (index: number) => {
+    const position = (index - currentIndex + feedbacks.length) % feedbacks.length;
+    return {
+      transform: `translateX(${position * 110}%) scale(${position === 0 ? 1 : 0.8})`,
+      opacity: position === 0 ? 1 : 0.5,
+      zIndex: feedbacks.length - position,
+      transition: "all 0.3s ease-in-out",
     };
-
-    if (isAnimating && index === 0) {
-      if (direction === 'next') {
-        return {
-          ...baseStyles,
-          transform: 'translate(-100px, 0) rotate(-10deg)',
-          opacity: 0,
-        };
-      } else {
-        return {
-          ...baseStyles,
-          transform: 'translate(100px, 0) rotate(10deg)',
-          opacity: 0,
-        };
-      }
-    }
-
-    return baseStyles;
   };
 
   return (
-    <section className="flex flex-col items-center bg-black px-5 py-16">
-      <div className="text-center mb-12">
-        <h1 className="text-white text-3xl font-semibold font-inter text-center">
-          Book a ride online with Aegean Taxi in the following locations
-        </h1>
-      </div>
-      
-      <div className="flex items-center justify-between w-full max-w-3xl mb-10">
-        <button 
-          onClick={handlePrev}
-          disabled={isAnimating}
-          className="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center hover:bg-gray-100 transition-colors disabled:opacity-50"
+    <div
+      className="flex flex-col items-center justify-center px-4 mx-8 my-20"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Header Section */}
+      <div className="text-left">
+        <h2
+          className="text-4xl font-bold text-transparent bg-clip-text mb-2"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #0000FF 0%, #46AFE0 28%, #9898E7 55%, #64429A 83%)",
+          }}
         >
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+          Testimonials
+        </h2>
+        <p className="text-gray-600 text-left">
+          What travellers who booked an airport transfer in Mykonos say about our service
+        </p>
+      </div>
 
-        <div className="relative mr-10 w-[250px] h-[260px] flex flex-col items-center">
-          <h1 
-            className={`text-white ml-10 text-center text-2xl font-inter mb-4 transition-all duration-300 ease-in-out ${
-              isAnimating 
-                ? direction === 'next'
-                  ? 'opacity-0 transform -translate-y-4'
-                  : 'opacity-0 transform translate-y-4'
-                : 'opacity-100 transform translate-y-0'
-            }`}
+      {/* Swipeable Testimonials */}
+      <div className="relative w-full max-w-4xl h-[400px] flex justify-center items-center">
+        {feedbacks.map((feedback, index) => (
+          <div
+            key={index}
+            className="absolute p-4 w-[275px] h-[290px] text-center rounded-lg shadow-lg"
+            style={{
+              ...getCardStyle(index),
+              backgroundColor: feedback.bgColor,
+            }}
           >
-            {visibleImages[0]?.location || ''}
-          </h1>
-          
-          <div 
-            className="relative ml-10 w-[200px] h-[210px]"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            {visibleImages.map((item, index) => (
-              <div
-                key={item.id}
-                className="absolute w-[230px] h-[240px] touch-none select-none"
-                style={getImageStyles(index)}
-              >
+            {/* User Info */}
+            <div className="flex items-center justify-left mx-4 mb-2">
+              <Image
+                src={feedback.img}
+                alt={`${feedback.name} profile`}
+                width={50}
+                height={50}
+                className="rounded-full"
+              />
+              <h3 className="text-lg text-white font-semibold ml-4">{feedback.name}</h3>
+            </div>
+
+            {/* Stars */}
+            <div className="flex justify-center mt-2 space-x-1">
+              {Array.from({ length: feedback.stars }).map((_, starIndex) => (
                 <Image
-                  src={item.src}
-                  alt={`Location ${index + 1}`}
-                  width={230}
-                  height={240}
-                  className="rounded-lg pointer-events-none"
-                  draggable={false}
+                  key={starIndex}
+                  src={Star}
+                  alt="Star"
+                  width={25}
+                  height={25}
                 />
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Feedback */}
+            <p className="text-white text-left text-sm mt-6 px-6">{feedback.feedback}</p>
+
+            {/* Date */}
+            <div className="flex items-center justify-center mt-4 bg-black text-white px-4 py-2 rounded-full text-xs">
+              <Image src={CalenderIcon} alt="Calendar" width={16} height={16} />
+              <span className="ml-2">{feedback.date}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Trustpilot & TripAdvisor Section */}
+      <div className="flex flex-col items-center w-full mt-8">
+        <div className="flex w-full">
+          {/* Trustpilot Section */}
+          <div className="flex flex-col items-center w-1/2">
+            <div className="h-[100px] flex items-center">
+              <Image src={TrustPilot} alt="Trustpilot Logo" width={200} height={100} />
+            </div>
+            <a href="#" className="px-2 self-start text-blue-500 hover:underline text-sm mb-2 ">
+              Go to Trustpilot →
+            </a>
+          </div>
+
+          {/* TripAdvisor Section */}
+          <div className="flex flex-col items-center w-1/2">
+            <div className="h-[100px] flex items-center">
+              <Image src={TripAdvisor} alt="TripAdvisor Logo Duplicate" width={200} height={100} />
+            </div>
+            <a href="#" className="text-blue-500 hover:underline text-sm mb-2">
+              Go to Tripadvisor →
+            </a>
           </div>
         </div>
-
-        <button 
-          onClick={handleNext}
-          disabled={isAnimating}
-          className="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center hover:bg-gray-100 transition-colors disabled:opacity-50"
-        >
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
       </div>
-
-      <button className="mt-12 bg-white text-black text-lg font-semibold font-inter px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
-        Book Taxi
-      </button>
-    </section>
+    </div>
   );
 };
 
-export default TaxiInLocationSection;
+export default Testimonial;

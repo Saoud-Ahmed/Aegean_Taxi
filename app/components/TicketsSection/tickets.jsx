@@ -48,7 +48,7 @@ const TaxiPrices = () => {
     <section className="bg-white px-4 py-8 md:px-12">
       {/* Heading */}
       <h1
-          className=" px-4 text-3xl font-bold leading-[1.1] bg-clip-text text-transparent"
+          className="  text-3xl font-bold leading-[1.1] bg-clip-text text-transparent"
           style={{
             backgroundImage:
               "linear-gradient(to right, #0000FF 0%, #46AFE0 28%, #9898E7 55%, #64429A 83%)",

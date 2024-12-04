@@ -38,7 +38,7 @@ const AppSlider = [
     step: "Step 3",
     imgsrc: AppImg1, 
     description: "Choose a taxi category and book your ride.",
-    textcolor: "black",
+    textcolor: "white",
     textAlignment: "top-0 text-left",
   },
   {

@@ -24,6 +24,9 @@ import TicketSection from "../components/TicketsSection/tickets";
 import TestimonialSection from "../components/TestimonialSection/testimonial";
 import DriverSection from "../components/Driver Section/drivers";
 import FindUsSection from "../components/FindUsSsection/findus";
+import Footer from "../components/Footer/footer";
+
+
 
 const cars = [
   {
@@ -216,6 +219,7 @@ const LocationPage = () => {
         <BlogSection />
         <DriverSection />
         <FindUsSection />
+        <Footer />
       </div>
     </div>
   );

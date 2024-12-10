@@ -156,12 +156,13 @@ export default function DriverSection() {
                   : '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
               }}
             >
-              {/* Text Section */}
-              <h3 className="text-lg font-med text-left">{card.name}</h3>
-              <p className="text-sm font-light text-left">
-                Start Date: {card.startDate}
-              </p>
-              <p className="text-sm font-light text-left">Car: {card.car}</p>
+                                  {/* Text Section */}
+                    <h2 className="text-lg font-med text-left">{card.name}</h2> {/* Changed to h2 */}
+                    <p className="text-sm font-light text-left">
+                      Start Date: {card.startDate}
+                    </p>
+                    <p className="text-sm font-light text-left">Car: {card.car}</p>
+
 
               {/* Image Section */}
               <div className="mt-4">
@@ -177,23 +178,23 @@ export default function DriverSection() {
           ))}
         </div>
 
-      {/* Improved Indicator Section */}
-<div className="flex justify-center mt-4 space-x-4"> {/* Increased space between buttons */}
-  {cards.map((_, index) => (
-    <button
-      key={index}
-      onClick={() => navigateToIndex(index)}
-      className={`
-        w-4 h-4 rounded-full transition-all duration-300 ease-in-out cursor-pointer
-        ${activeIndex === index
-          ? "bg-black w-4 h-4"
-          : "bg-gray-300 hover:bg-gray-400"
-        }
-      `}
-      aria-label={`Go to card ${index + 1}`} 
-    />
-  ))}
-</div>
+              {/* Improved Indicator Section */}
+        <div className="flex justify-center mt-4 space-x-4"> {/* Increased space between buttons */}
+          {cards.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => navigateToIndex(index)}
+              className={`
+                w-4 h-4 rounded-full transition-all duration-300 ease-in-out cursor-pointer
+                ${activeIndex === index
+                  ? "bg-black w-4 h-4"
+                  : "bg-gray-300 hover:bg-gray-400"
+                }
+              `}
+              aria-label={`Go to card ${index + 1}`} 
+            />
+          ))}
+        </div>
 
       </div>
     </div>

@@ -185,8 +185,8 @@ export default function AdditionalServices() {
                       height={50}
                     />
                   </div>
-                  <h1 className="text-lg pt-2 font-bold text-left">{card.heading}</h1>
-                  <h2 className="text-sm pt-2 font-light text-left">{card.text}</h2>
+                  <h2 className="text-lg pt-2 font-bold text-left">{card.heading}</h2>
+                  <h3 className="text-sm pt-2 font-med text-left">{card.text}</h3>
                 </div>
               </div>
             </div>

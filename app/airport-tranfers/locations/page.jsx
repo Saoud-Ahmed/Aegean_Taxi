@@ -105,6 +105,7 @@ const AirportTransfers = () => {
                       alt="Destination location icon"
                       width={16}
                       height={16}
+                      priority
                     />
                   </div>
                 </div>

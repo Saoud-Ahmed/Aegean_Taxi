@@ -17,13 +17,13 @@ const FindUsSection = React.lazy(() => import("../../components/FindUsSsection/f
 
 // Assets
 import HamgurgerIcon from "./assets/hamburger.svg";
-import Logo from "./assets/logo.png";
-import AppleStore from "./assets/apple.png";
+import Logo from "./assets/logo.svg";
+import AppleStore from "./assets/apple.svg";
 import Maps from "./assets/img.png";
-import Call from "./assets/phone.png";
-import WhatsApp from "./assets/whatsapp.png";
-import PickUpIcon from "./assets/pickupicon.png";
-import DestinationIcon from "./assets/destination-icon.png";
+import Call from "./assets/call.svg";
+import WhatsApp from "./assets/whatsapp.svg";
+import PickUpIcon from "./assets/pickupicon.svg";
+import DestinationIcon from "./assets/destination-icon.svg";
 
 const AirportTransfers = () => {
   return (

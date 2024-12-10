@@ -49,8 +49,8 @@ const AirportTransfers = () => {
           <Image src={Logo} alt="Aegean Taxi" width={120} height={20} className="h-5 ml-1" />
         </div>
 
-        <button className="ml-6 h-8 bg-white px-6 py-1 rounded-xl flex items-center">
-          <Image src={AppleStore} alt="App Store" className="w-full h-6" />
+        <button className="ml-6 h-8 bg-white pl-auto py-1 mt-1 rounded-xl flex items-center">
+          <Image src={AppleStore} alt="App Store" className="w-full h-8" />
         </button>
       </header>
 

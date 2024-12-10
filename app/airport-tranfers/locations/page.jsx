@@ -3,6 +3,19 @@
 import React from "react";
 import Image from "next/image";
 
+// Dynamic imports to lazy load non-critical components
+const TicketSection = React.lazy(() => import("../../components/AirportTickets/AirportTickets"));
+const WhyBookSection = React.lazy(() => import("../../components/Why_Book_Section/WhyBookSection"));
+const CategorySection = React.lazy(() => import("../../components/TaxiCategoriesSection/TaxiCategories"));
+const AdditionalAirport = React.lazy(() => import("../../components/MykonosAirport/MykonosAirport"));
+const Testimonial = React.lazy(() => import("../../components/TestimonialSection/testimonial"));
+const FAQs = React.lazy(() => import("../../components/FAQsSection/faqs"));
+const Blog = React.lazy(() => import("../../components/BlogSection/blog"));
+const HowToBookSection = React.lazy(() => import("../../components/BookingOptionsSection/BookingOptions"));
+const Driver = React.lazy(() => import("../../components/Driver Section/drivers"));
+const FindUsSection = React.lazy(() => import("../../components/FindUsSsection/findus"));
+
+// Assets
 import HamgurgerIcon from "./assets/hamburger.svg";
 import Logo from "./assets/logo.png";
 import AppleStore from "./assets/apple.png";
@@ -12,24 +25,10 @@ import WhatsApp from "./assets/whatsapp.png";
 import PickUpIcon from "./assets/pickupicon.png";
 import DestinationIcon from "./assets/destination-icon.png";
 
-import TicketSection from "../../components/AirportTickets/AirportTickets";
-import WhyBookSection from "../../components/Why_Book_Section/WhyBookSection";
-import CategorySection from "../../components/TaxiCategoriesSection/TaxiCategories";
-import AdditionalAirport from "../../components/MykonosAirport/MykonosAirport";
-import Testimonial from "../../components/TestimonialSection/testimonial";
-import FAQs from "../../components/FAQsSection/faqs";
-import Blog from "../../components/BlogSection/blog";
-import HowToBookSection from "../../components/BookingOptionsSection/BookingOptions";
-import Driver from "../../components/Driver Section/drivers";
-import FindUsSection from "../../components/FindUsSsection/findus";
-
-
-
 const AirportTransfers = () => {
-
   return (
-            <div className="bg-white">
-{/* Header Section */}
+    <div className="bg-white">
+      {/* Header Section */}
       <header className="bg-transparent flex flex-row items-center justify-between px-8 py-2">
         <button>
           <Image
@@ -51,10 +50,10 @@ const AirportTransfers = () => {
       </header>
 
       {/* Main Section */}
-      <main className="mx-8 mt-20 mb-8 flex flex-col ">
+      <main className="mx-8 mt-20 mb-8 flex flex-col">
         <div className="flex flex-col items-center text-left text-black">
-          <h1 className="text-3xl font-bold  mb-2">
-          Airport transfers for all airport in Greece
+          <h1 className="text-3xl font-bold mb-2">
+            Airport transfers for all airport in Greece
           </h1>
           <Image
             src={Maps}
@@ -64,53 +63,50 @@ const AirportTransfers = () => {
             priority
           />
         </div>
-        <h1 className=" font-bold text-black mt-3">
-        Book a mykonos airport taxi ride to and from the airport. Book now or schedule for later
-          </h1>
+        <h1 className="font-bold text-black mt-3">
+          Book a Mykonos airport taxi ride to and from the airport. Book now or schedule for later
+        </h1>
 
-          <div className=" pt-8 rounded-xl">
-              <div className="relative flex flex-col gap-4">
-                {/* Pick-Up Input */}
-                <div className="relative">
-                  
-                  <input
-                    id="pickup"
-                    type="text"
-                    placeholder="Enter pick-up location"
-                    className="w-full p-4 border border-black rounded-lg pl-12"
-                  />
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                    <Image src={PickUpIcon} alt="Pick-up location icon" width={16} height={16} />
-                  </div>
-                </div>
-
-
-                    {/* Connecting Line */}
-                <div
-                  className="absolute left-[23px] top-[35px] h-[60px] w-[2px] bg-black  z-20"
-                  aria-hidden="true"
-                ></div>
-
-                {/* Destination Input */}
-                <div className="relative">
-                  
-                  <input
-                    id="destination"
-                    type="text"
-                    placeholder="Enter destination"
-                    className="w-full p-4 border border-black rounded-lg pl-12"
-                  />
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                    <Image
-                      src={DestinationIcon}
-                      alt="Destination location icon"
-                      width={16}
-                      height={16}
-                    />
-                  </div>
-                </div>
+        <div className="pt-8 rounded-xl">
+          <div className="relative flex flex-col gap-4">
+            {/* Pick-Up Input */}
+            <div className="relative">
+              <input
+                id="pickup"
+                type="text"
+                placeholder="Enter pick-up location"
+                className="w-full p-4 border border-black rounded-lg pl-12"
+              />
+              <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                <Image src={PickUpIcon} alt="Pick-up location icon" width={16} height={16} />
               </div>
             </div>
+
+            {/* Connecting Line */}
+            <div
+              className="absolute left-[23px] top-[35px] h-[60px] w-[2px] bg-black z-20"
+              aria-hidden="true"
+            ></div>
+
+            {/* Destination Input */}
+            <div className="relative">
+              <input
+                id="destination"
+                type="text"
+                placeholder="Enter destination"
+                className="w-full p-4 border border-black rounded-lg pl-12"
+              />
+              <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                <Image
+                  src={DestinationIcon}
+                  alt="Destination location icon"
+                  width={16}
+                  height={16}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
 
       {/* Buttons Section */}
@@ -134,23 +130,20 @@ const AirportTransfers = () => {
         </button>
       </div>
 
-
-        
-        <WhyBookSection/>
-        <CategorySection/>
-        <TicketSection/>
-       
+      {/* Lazy Loaded Sections */}
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <WhyBookSection />
+        <CategorySection />
+        <TicketSection />
         <AdditionalAirport />
-        <HowToBookSection/>
-       
+        <HowToBookSection />
         <Testimonial />
         <FAQs />
         <Blog />
         <Driver />
-        <FindUsSection/>
-
-      </div>
-
+        <FindUsSection />
+      </React.Suspense>
+    </div>
   );
 };
 

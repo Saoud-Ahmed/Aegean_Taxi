@@ -26,8 +26,14 @@ import HowToBookSection from "../components/HowToBook/HowBook";
 const AirportTransfers = () => {
 
   return (
-            <div className="bg-gradient-to-b from-[#10014C] via-[#43659C] to-[#298ED1]">
+            <div className=" h-screen"
+            style={{
+                backgroundImage:
+                  "linear-gradient(to bottom, #10014C 0%, #43659C 30%, #5078B1 67%, #298ED1 100%)",
+              }}
+              >
 {/* Header Section */}
+    
       <header className="bg-transparent flex flex-row items-center justify-between px-8 py-2">
         <button>
           <Image
@@ -49,23 +55,23 @@ const AirportTransfers = () => {
       </header>
 
       {/* Main Section */}
-      <main className="mx-8 my-5 flex flex-col ">
-        <div className="flex flex-col items-center text-left text-white">
-          <h1 className="text-3xl font-bold ">
+      <main className="mx-8 mb-7  mt-20 flex flex-col ">
+        <div className="flex flex-col items-center mb-5 text-left text-white">
+          <h1 className="text-3xl font-bold mb-7">
           Airport transfers for all airport in Greece
           </h1>
           <Image
             src={Maps}
             alt="Map showing locations"
             height={200}
-            className="my-5 w-full max-w-lg h-[200px]"
+            className="my-5 w-full max-w-lg h-[220px]"
           />
         </div>
         <h1 className="text-white font-bold ">
           Request an airport taxi ride
           </h1>
 
-          <div className=" pt-6 rounded-xl">
+          <div className=" pt-10 rounded-xl">
               <div className="relative flex flex-col gap-4">
                 {/* Pick-Up Input */}
                 <div className="relative">
@@ -111,7 +117,7 @@ const AirportTransfers = () => {
       </main>
 
       {/* Buttons Section */}
-      <div className="flex flex-row justify-between mt-6 w-full">
+      <div className="flex flex-row justify-between mt-10 mb-20 w-full">
         <button className="flex flex-col items-center justify-center w-36 h-20 bg-transparent rounded-xl text-white hover:bg-gray-100 transition-colors">
           <Image src={Call} alt="Phone" width={46} height={36} className="mb-1" />
           <span className="font-medium text-[10px]">Call</span>

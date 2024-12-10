@@ -61,6 +61,7 @@ const AirportTransfers = () => {
             alt="Map showing locations"
             height={200}
             className="my-5 w-full max-w-lg h-[220px]"
+            priority
           />
         </div>
         <h1 className=" font-bold text-black mt-3">
@@ -105,7 +106,6 @@ const AirportTransfers = () => {
                       alt="Destination location icon"
                       width={16}
                       height={16}
-                      priority
                     />
                   </div>
                 </div>
@@ -125,7 +125,7 @@ const AirportTransfers = () => {
         <button className="flex flex-col items-center justify-center w-36 h-20 bg-transparent rounded-xl text-white hover:bg-gray-100 transition-colors">
           <Image
             src={WhatsApp}
-            alt="WhatsApp"
+            alt="WhatsApp Icon"
             width={50}
             height={36}
             className="mb-1"

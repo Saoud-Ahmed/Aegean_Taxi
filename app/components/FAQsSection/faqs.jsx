@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import ArrowDown from "./assets/arrow.png"; 
 import ArrowBtn from "./assets/arrow2.png";
-
+import curtains from './assets/curtains.png';
 const FAQs = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -85,6 +85,7 @@ const FAQs = () => {
 
 
         </div>
+        <Image src={curtains} alt='Curtains' />
       </div>
     </div>
   );

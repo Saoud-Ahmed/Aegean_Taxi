@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import ChildSeatIcon from "./assets/childseat.png";
 import SIMIcon from "./assets/localSIM.png";
-
+import beach from './assets/beach.png';
 export default function AdditionalServices() {
   const cards = [
     {
@@ -127,6 +127,9 @@ export default function AdditionalServices() {
 
   return (
     <div className="my-20 flex flex-col">
+      <div className="w-full mb-12">
+        <Image src={beach} alt="Beach Image" />
+      </div>
       <div className="px-8">
         {/* Heading Section */}
         <div className="text-left pb-4">

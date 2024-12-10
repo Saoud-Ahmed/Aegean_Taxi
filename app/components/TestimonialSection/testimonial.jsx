@@ -1,16 +1,28 @@
-import React from "react";
+
+
+
+
+"use client";
+
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 
 import PersonImg from "./assets/person-img.png";
 import Star from "./assets/star.png";
 import CalenderIcon from "./assets/calender.png";
 import TrustPilot from "./assets/trustpilot.png";
-import TripAdvisor from "./assets/tripadvisor.png";
+import TripAdvisor  from "./assets/tripadvisor.png";
 
 // Feedback Data
 const feedbacks = [
-  
-  
+  {
+    img: PersonImg,
+    name: "Matt Williams",
+    bgColor: "#4DADE1",
+    stars: 5,
+    feedback: "We have used the app several times, We have used the app several times We have used the app several times",
+    date: "July 2024",
+  },
   {
     img: PersonImg,
     name: "Emily Johnson",
@@ -18,7 +30,7 @@ const feedbacks = [
     stars: 5,
     feedback: "We have used the app several times, We have used the app several times We have used the app several times",
     date: "May 2024",
-  } ,
+  },
   {
     img: PersonImg,
     name: "Emily Johnson",
@@ -26,59 +38,179 @@ const feedbacks = [
     stars: 5,
     feedback: "We have used the app several times, We have used the app several times We have used the app several times",
     date: "May 2024",
-  } ,
+  },
   {
     img: PersonImg,
     name: "Sophia Brown",
-    bgColor: "#D9D9D9",
+    bgColor: "#B1B0B0",
     stars: 4,
     feedback: "We have used the app several times, We have used the app several times We have used the app several times",
     date: "June 2024",
   },
-  {
-    img: PersonImg, 
-    name: "Matt Williams",
-    bgColor: "#4DADE1", 
-    stars: 5,
-    feedback: "We have used the app several times, We have used the app several times We have used the app several times",
-    date: "July 2024",
-  },
+ 
 ];
 
 const Testimonial = () => {
+  const [visibleFeedbacks, setVisibleFeedbacks] = useState(feedbacks);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState('next');
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  const startTime = useRef(0);
+
+  const minSwipeDistance = 50;
+  const transitionDuration = 300;
+
+  const handleNext = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setDirection('next');
+
+    setTimeout(() => {
+      const newFeedbacks = [...visibleFeedbacks];
+      const firstFeedback = newFeedbacks.shift();
+      newFeedbacks.push(firstFeedback);
+
+      setVisibleFeedbacks(newFeedbacks);
+      setIsAnimating(false);
+    }, transitionDuration);
+  };
+
+  const handlePrev = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setDirection('prev');
+
+    setTimeout(() => {
+      const newFeedbacks = [...visibleFeedbacks];
+      const lastFeedback = newFeedbacks.pop();
+      newFeedbacks.unshift(lastFeedback);
+
+      setVisibleFeedbacks(newFeedbacks);
+      setIsAnimating(false);
+    }, transitionDuration);
+  };
+
+  const handleTouchStart = (e) => {
+    if (isAnimating) return;
+    touchStartX.current = e.touches[0].clientX;
+    startTime.current = Date.now();
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging || isAnimating) return;
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging || isAnimating) return;
+    setIsDragging(false);
+
+    const swipeDistance = touchEndX.current - touchStartX.current;
+    const swipeTime = Date.now() - startTime.current;
+    const swipeVelocity = Math.abs(swipeDistance) / swipeTime;
+
+    if (Math.abs(swipeDistance) >= minSwipeDistance || swipeVelocity > 0.5) {
+      if (swipeDistance > 0) {
+        handlePrev();
+      } else {
+        handleNext();
+      }
+    }
+  };
+
+  const getCardStyles = (index) => {
+    const baseStyles = {
+      transition: `all ${transitionDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+      zIndex: visibleFeedbacks.length - index,
+    };
+
+    // First card (index 0) should not rotate
+    if (index === 0) {
+      if (isAnimating) {
+        if (direction === 'next') {
+          return {
+            ...baseStyles,
+            transform: 'translate(-10px, 0)',
+            opacity: 0,
+          };
+        } else {
+          return {
+            ...baseStyles,
+            transform: 'translate(10px, 0)',
+            opacity: 0,
+          };
+        }
+      }
+      return baseStyles;
+    }
+
+    // Other cards rotate as before
+    const rotationStyles = {
+      transform: `rotate(-${4 + (visibleFeedbacks.length - 1 - index) * 6}deg)`,
+    };
+
+    if (isAnimating && index === 1) {
+      if (direction === 'next') {
+        return {
+          ...baseStyles,
+          ...rotationStyles,
+          transform: 'translate(-100px, 0) rotate(-10deg)',
+          opacity: 0,
+        };
+      } else {
+        return {
+          ...baseStyles,
+          ...rotationStyles,
+          transform: 'translate(100px, 0) rotate(10deg)',
+          opacity: 0,
+        };
+      }
+    }
+
+    return {
+      ...baseStyles,
+      ...rotationStyles,
+    };
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center px-4 mx-8 my-20">
+    <div className="flex flex-col items-center justify-center my-20">
       {/* Header Section */}
-      <div className="text-left ">
-                    <h2
-                className="text-4xl font-bold text-transparent bg-clip-text mb-2"
-                style={{
-                    backgroundImage:
-                    "linear-gradient(to right, #0000FF 0%, #46AFE0 28%, #9898E7 55%, #64429A 83%)",
-                }}
-                >
-                Testimonials
-                </h2>
+      <div className="text-left px-4 mx-8">
+        <h2
+          className="text-4xl font-bold text-transparent bg-clip-text mb-2"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #0000FF 0%, #46AFE0 28%, #9898E7 55%, #64429A 83%)",
+          }}
+        >
+          Testimonials
+        </h2>
 
         <p className="text-gray-600 text-left">
           What travellers who booked an airport transfer in Mykonos say about our service
         </p>
       </div>
 
-      <div className="relative w-full max-w-4xl h-[400px] flex justify-center items-center">
-      <div className="relative w-full flex justify-center items-center">
-        {feedbacks.map((feedback, index) => (
+      <div 
+        className="relative w-full max-w-4xl h-[400px] flex justify-center items-center overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {visibleFeedbacks.map((feedback, index) => (
           <div
             key={index}
             className="absolute p-4 w-[275px] h-[290px] text-center rounded-lg shadow-lg transition-all duration-300 hover:z-50"
             style={{
               backgroundColor: feedback.bgColor,
-              transform: index === feedbacks.length -1 
-                ? 'rotate(0deg)' 
-                : `rotate(-${4 + (feedbacks.length - 1 - index) * 5}deg)`, // Adjusted rotation logic
-              zIndex: index + 1, // Adjusted z-index to bring last card to front
+              ...getCardStyles(index),
               left: '50%',
-              marginLeft: '-137.5px', // Half of the card's width to perfectly center
+              marginLeft: '-137.5px',
             }}
           >
             {/* User Info */}
@@ -122,11 +254,11 @@ const Testimonial = () => {
           </div>
         ))}
       </div>
-    </div>
-
       
+
+    
      {/* Trustpilot & TripAdvisor Section */}
-<div className="flex flex-col items-center w-full mt-8">
+<div className="flex flex-col items-center w-full mt-8 px-8" >
   <div className="flex w-full">
     {/* Trustpilot Section */}
     <div className="flex flex-col items-center w-1/2">
@@ -139,7 +271,7 @@ const Testimonial = () => {
           height={100}
         />
       </div>
-      <a href="#" className="px-2 self-start  text-blue-500 hover:underline text-sm mb-2 ">
+      <a href="#" className="px-2 self-start  text-blue-500 hover:underline text-sm mb-2 ml-1">
         Go to Trustpilot →
       </a>
     </div>
@@ -161,17 +293,11 @@ const Testimonial = () => {
       </a>
     </div>
   </div>
-
-
- 
-
- 
 </div>
-
-
-
     </div>
   );
 };
 
 export default Testimonial;
+
+

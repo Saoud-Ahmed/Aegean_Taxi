@@ -139,7 +139,7 @@ export default function WhyBookSection() {
 
         {/* Image Section */}
         <div className="flex justify-end">
-          <div className="w-3/5">
+          <div className="w-full">
             <Image
               src={TaxiImage}
               alt="Taxi"
@@ -161,9 +161,9 @@ export default function WhyBookSection() {
           {cards.map((card, index) => (
             <div
               key={index}
-              className="relative flex-shrink-0 w-60 h-60 ml-6"
+              className="relative flex-shrink-0 w-40 h-72 ml-2"
             >
-              <div className="relative border border-black w-50 rounded-3xl bg-[#F5F5F7] shadow-lg p-4 pb-7 pl-5">
+              <div className="relative border border-black w-50 h-64 rounded-3xl bg-[#F5F5F7] shadow-lg p-4 pb-7 pl-5">
                 <div className="flex justify-left">
                   <Image
                     src={card.imgsrc}

@@ -177,20 +177,24 @@ export default function DriverSection() {
           ))}
         </div>
 
-        {/* Indicator Section */}
-        <div className="flex justify-center mt-4 space-x-2">
-          {cards.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => navigateToIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ease-in-out cursor-pointer ${
-                activeIndex === index
-                  ? "bg-black w-3 h-3"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-            />
-          ))}
-        </div>
+      {/* Improved Indicator Section */}
+<div className="flex justify-center mt-4 space-x-4"> {/* Increased space between buttons */}
+  {cards.map((_, index) => (
+    <button
+      key={index}
+      onClick={() => navigateToIndex(index)}
+      className={`
+        w-4 h-4 rounded-full transition-all duration-300 ease-in-out cursor-pointer
+        ${activeIndex === index
+          ? "bg-black w-4 h-4"
+          : "bg-gray-300 hover:bg-gray-400"
+        }
+      `}
+      aria-label={`Go to card ${index + 1}`} 
+    />
+  ))}
+</div>
+
       </div>
     </div>
   );

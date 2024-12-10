@@ -178,7 +178,7 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center my-20">
+    <div className="flex bg-white flex-col items-center justify-center py-20">
       {/* Header Section */}
       <div className="text-left px-4 mx-8">
         <h2

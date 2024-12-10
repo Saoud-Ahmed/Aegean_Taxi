@@ -239,7 +239,7 @@ const SliderComponent = ({
         )}
       </div>
 
-      <p className="text-[#777777] mt-4 mb-4 pr-4">
+      <p className="text-[#3E4A54] mt-4 mb-4 pr-4">
         {descriptionText}
       </p>
 
@@ -272,24 +272,23 @@ const SliderComponent = ({
         </div>
 
         {/* Improved Indicator Section */}
-        <div className="flex justify-center mt-4 space-x-2">
-          {sliderData.map((_, index) => (
-            <button
-              key={index}
-             
-              className={`
-                transition-all duration-300 ease-in-out 
-                ${activeIndex === index 
-                  ? 'bg-black w-3 h-3 rounded-full'
-                  : 'bg-gray-500 hover:bg-gray-300 w-3 h-3 rounded-full'
-                }
-                transform hover:scale-110
-                focus:outline-none focus:ring-2 focus:ring-blue-500
-              `}
-              aria-label={`Go to ${_?.step || `slide ${index + 1}`}`}
-            />
-          ))}
-        </div>
+<div className="flex justify-center mt-4 space-x-4"> {/* Increased space between buttons */}
+  {sliderData.map((_, index) => (
+    <button
+      key={index}
+      className={`
+        transition-all duration-300 ease-in-out
+        ${activeIndex === index
+          ? 'bg-black w-4 h-4 rounded-full'  /* Increased size for better touch target */
+          : 'bg-gray-500 hover:bg-gray-300 w-4 h-4 rounded-full'
+        }
+        transform hover:scale-110
+        focus:outline-none focus:ring-2 focus:ring-blue-500
+      `}
+      aria-label={`Go to slide ${index + 1}`} 
+    />
+  ))}
+</div>
 
         <div className="pr-8">
         <button
@@ -328,7 +327,7 @@ const SliderComponent = ({
 // Main BookingOptions Component
 const BookingOptions = () => {
   return (
-    <div className="bg-[#121212] px-4 py-20 flex flex-col my-20">
+    <div className="bg-[#121212] px-4 py-20 flex flex-col py-20">
       {/* Heading Section */}
       <div className="text-left pb-10 px-6 ">
         <h1

@@ -38,7 +38,7 @@ const FAQs = () => {
   };
 
   return (
-    <div className="flex flex-col my-20 mx-8">
+    <div className="flex flex-col py-20 px-8 bg-white">
       {/* FAQ Section */}
       <div className="px-4 pt-6 bg-[#CCD3E1] rounded-3xl shadow-md">
         <h1 className="text-2xl font-bold text-left text-black py-6">

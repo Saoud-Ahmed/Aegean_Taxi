@@ -63,7 +63,10 @@ export default function HomePage() {
       </Head>
 
       {/* Main Sections */}
-      
+      <head>
+        <title>Aegean Taxi - Your Mykonos Taxi App</title>
+        <meta name="description" content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini bus options with transparent pricing." />
+      </head>
       <BlogPage/>
 
 

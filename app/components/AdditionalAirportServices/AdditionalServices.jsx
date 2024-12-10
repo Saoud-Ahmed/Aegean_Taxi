@@ -126,7 +126,7 @@ export default function AdditionalServices() {
   
 
   return (
-    <div className="my-20 flex flex-col">
+    <div className="py-20 flex flex-col bg-white ">
       <div className="w-full mb-12">
         <Image src={beach} alt="Beach Image" />
       </div>
@@ -134,18 +134,14 @@ export default function AdditionalServices() {
         {/* Heading Section */}
         <div className="text-left pb-4">
           <h1 className="text-3xl font-bold leading-[1.1] bg-gradient-to-r from-blue-800 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-            Additional Services in 
-          </h1>
-          <h1 className="text-3xl font-bold leading-[1.1] bg-gradient-to-r from-blue-800 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-            Mykonos Island by our taxis
+          Additional airport arrival services in Greece
           </h1>
         </div>
       </div>
 
       {/* Description */}
       <p className="text-[#3F3F3F] mx-8 text-lg">
-        Remove the stress of additional logistics and hassle when in Mykonos by offering essential services and extras
-      </p>
+      We remove the stress of additional logistics and hassle by offering you essential services and extras.      </p>
 
       {/* Slider Section */}
       <div className="mt-10">
@@ -196,7 +192,7 @@ export default function AdditionalServices() {
         <div className="mt-10 mx-8 ">
           <a
             href="#"
-            className="block text-center px-6 text-white bg-[#174FCD] text-md hover:bg-blue-600 font-semibold py-3 rounded-2xl"
+            className="block text-center px-6 text-white bg-[#174FCD] text-md hover:bg-blue-600 font-semibold py-3 rounded-xl"
           >
             Contact us for details
           </a>

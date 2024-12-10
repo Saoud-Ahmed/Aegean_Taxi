@@ -70,16 +70,16 @@ const TaxiCategories = () => {
             
 
             <div className="flex justify-between items-center text-sm">
-                    <h2 className="text-[15px] font-semibold text-blue-900 ">
+                    <h2 className="text-[15px] font-semibold text-blue-900  ">
                       {category.name}
                     </h2>
 
-                    <div className='flex mx-3 '>
+                    <div className='flex mx-1 '>
                     <div className="flex items-center mr-1">
                       <Image
                         src={PersonIcon} // Replace with an actual icon
                         alt="person"
-                        className="w-3 h-3 mr-1"
+                        className="w-3 h-3 mr-[2px]"
                       />
                       {category.persons}
                     </div>
@@ -87,7 +87,7 @@ const TaxiCategories = () => {
                       <Image
                         src={BagIcon} // Replace with an actual icon
                         alt="luggage"
-                        className="w-3 h-3 mr-1"
+                        className="w-3 h-3 mr-[2px]"
                       />
                       {category.luggage}
                     </div>

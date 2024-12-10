@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from "next/image";
 
-import StandardCar from "./assets/standard-car.png";
-import MiniVan from "./assets/mini-bus.png";
-import Van from "./assets/van-bus.png";
+import StandardCar from "./assets/standard-car.svg";
+import MiniVan from "./assets/mini-bus.svg";
+import Van from "./assets/van.svg";
 import PersonIcon from "./assets/personIcon.png";
 import BagIcon from "./assets/bagIcon.png";
 import OnlineIcon from "./assets/online-icon-removebg-preview.png";
@@ -92,8 +92,8 @@ const TaxiCategories = () => {
 
               <p className="text-sm text-gray-600 mr-1 mt-1">{category.description}</p>
               
-              <p className="text-md text-gray-500 mt-1">
-                <span className="font-light">From </span>
+              <p className="text-md text-black mt-1">
+                <span className="font-med">From </span>
                 <span className="font-bold text-black">€{category.price}</span>
               </p>
             </div>
@@ -105,7 +105,7 @@ const TaxiCategories = () => {
                 alt={category.name}
                 className="w-[100px] h-[70px] object-contain"
               />
-              <p className="text-sm text-center text-gray-500 leading-[1]">{category.imgDescription}</p>
+              <p className="text-sm text-center text-black leading-[1]">{category.imgDescription}</p>
             </div>
           </div>
         ))}

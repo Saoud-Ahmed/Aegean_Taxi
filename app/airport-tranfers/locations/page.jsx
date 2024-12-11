@@ -50,7 +50,7 @@ const AirportTransfers = () => {
       </header>
 
       {/* Main Section */}
-      <main className="mx-8 mt-20 mb-8 flex flex-col">
+      <main className="mx-8 mt-6 mb-8 flex flex-col">
         <div className="flex flex-col items-center text-left text-black">
           <h1 className="text-3xl font-bold mb-2">
             Airport transfers for all airport in Greece

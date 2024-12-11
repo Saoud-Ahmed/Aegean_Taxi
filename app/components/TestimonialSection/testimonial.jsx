@@ -1,7 +1,3 @@
-
-
-
-
 "use client";
 
 import React, { useState, useRef } from "react";
@@ -128,7 +124,7 @@ const Testimonial = () => {
       zIndex: visibleFeedbacks.length - index,
     };
 
-    // First card (index 0) should not rotate
+    // First card (index 0) should be centered and not rotated
     if (index === 0) {
       if (isAnimating) {
         if (direction === 'next') {
@@ -148,9 +144,14 @@ const Testimonial = () => {
       return baseStyles;
     }
 
-    // Other cards rotate as before
+    // New stacking logic: 
+    // - 4px left displacement per card
+    // - 4 degrees rotation per card
+    const leftDisplacement = index * 10;
+    const rotation = index * 4;
+
     const rotationStyles = {
-      transform: `rotate(-${4 + (visibleFeedbacks.length - 1 - index) * 6}deg)`,
+      transform: `translateX(-${leftDisplacement}px) rotate(-${rotation}deg)`,
     };
 
     if (isAnimating && index === 1) {
@@ -182,11 +183,8 @@ const Testimonial = () => {
       {/* Header Section */}
       <div className="text-left px-4 mx-8">
         <h2
-          className="text-4xl font-bold text-transparent bg-clip-text mb-2"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, #0000FF 0%, #46AFE0 28%, #9898E7 55%, #64429A 83%)",
-          }}
+          className="text-4xl font-bold text-[#0000FF] bg-clip-text mb-2"
+         
         >
           Testimonials
         </h2>
@@ -209,7 +207,7 @@ const Testimonial = () => {
             style={{
               backgroundColor: feedback.bgColor,
               ...getCardStyles(index),
-              left: '50%',
+              left: '55%',
               marginLeft: '-137.5px',
             }}
           >
@@ -255,49 +253,45 @@ const Testimonial = () => {
         ))}
       </div>
       
+      {/* Trustpilot & TripAdvisor Section */}
+      <div className="flex flex-col items-center w-full mt-8 px-8" >
+        <div className="flex w-full">
+          {/* Trustpilot Section */}
+          <div className="flex flex-col items-center w-1/2">
+            
+            <div className="h-[100px] flex items-center">
+              <Image
+                src={TrustPilot}
+                alt="Trustpilot Logo"
+                width={200}
+                height={100}
+              />
+            </div>
+            <a href="#" className="px-2 self-start  text-blue-500 hover:underline text-sm mb-2 ml-1">
+              Go to Trustpilot →
+            </a>
+          </div>
 
-    
-     {/* Trustpilot & TripAdvisor Section */}
-<div className="flex flex-col items-center w-full mt-8 px-8" >
-  <div className="flex w-full">
-    {/* Trustpilot Section */}
-    <div className="flex flex-col items-center w-1/2">
-      
-      <div className="h-[100px] flex items-center">
-        <Image
-          src={TrustPilot}
-          alt="Trustpilot Logo"
-          width={200}
-          height={100}
-        />
+          {/* TripAdvisor Section */}
+          <div className="flex flex-col items-center w-1/2">
+            
+            <div className="h-[100px] flex items-center">
+              <Image
+                src={TripAdvisor}
+                alt="TripAdvisor Logo Duplicate"
+                width={200}
+                height={100}
+              />
+              
+            </div>
+            <a href="#" className="text-blue-500 hover:underline text-sm mb-2">
+              Go to Tripadvisor →
+            </a>
+          </div>
+        </div>
       </div>
-      <a href="#" className="px-2 self-start  text-blue-500 hover:underline text-sm mb-2 ml-1">
-        Go to Trustpilot →
-      </a>
-    </div>
-
-    {/* TripAdvisor Section */}
-    <div className="flex flex-col items-center w-1/2">
-      
-      <div className="h-[100px] flex items-center">
-        <Image
-          src={TripAdvisor}
-          alt="TripAdvisor Logo Duplicate"
-          width={200}
-          height={100}
-        />
-        
-      </div>
-      <a href="#" className="text-blue-500 hover:underline text-sm mb-2">
-        Go to Tripadvisor →
-      </a>
-    </div>
-  </div>
-</div>
     </div>
   );
 };
 
 export default Testimonial;
-
-

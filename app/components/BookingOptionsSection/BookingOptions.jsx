@@ -160,7 +160,7 @@ const SliderComponent = ({
   buttonTextColor,
   headingIcon = null 
 }) => {
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [ setActiveIndex] = React.useState(0);
   const scrollRef = React.useRef(null);
   const cardWidth = 260; // Width of each card
   const [isDragging, setIsDragging] = React.useState(false);
@@ -271,24 +271,6 @@ const SliderComponent = ({
           ))}
         </div>
 
-        {/* Improved Indicator Section */}
-<div className="flex justify-center mt-4 space-x-4"> {/* Increased space between buttons */}
-  {sliderData.map((_, index) => (
-    <button
-      key={index}
-      className={`
-        transition-all duration-300 ease-in-out
-        ${activeIndex === index
-          ? 'bg-black w-4 h-4 rounded-full'  /* Increased size for better touch target */
-          : 'bg-gray-500 hover:bg-gray-300 w-4 h-4 rounded-full'
-        }
-        transform hover:scale-110
-        focus:outline-none focus:ring-2 focus:ring-blue-500
-      `}
-      aria-label={`Go to slide ${index + 1}`} 
-    />
-  ))}
-</div>
 
         <div className="pr-8">
         <button
@@ -331,15 +313,12 @@ const BookingOptions = () => {
       {/* Heading Section */}
       <div className="text-left pb-10 px-6 ">
         <h1
-          className="text-3xl font-bold leading-[1.1] bg-clip-text text-transparent"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, #0D55FB 0%, #04A1FC 24%, #755FE3 51%, #ECECEC 76%)",
-          }}
+          className="text-3xl font-bold leading-[1.1] bg-clip-text text-white"
+          
         >
           Mykonos Taxi Booking options and process
         </h1>
-        <p className="text-[#87908F] mt-4">
+        <p className="text-white mt-4">
         We made is easier to book your taxi ride in Mykonos! With 4 booking options available to choose from, and a simple process, you can enjoy your Mykonos holiday and leave the logistics to us!
         </p>
       </div>

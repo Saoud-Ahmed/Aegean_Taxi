@@ -121,8 +121,8 @@ export default function DriverSection() {
       <div className="mx-8">
         {/* Heading Section */}
         <div className="text-left pb-4">
-          <h1 className="text-3xl font-bold leading-[1.1] bg-gradient-to-r from-blue-800 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-            Our Professional Drivers
+          <h1 className="text-3xl font-bold leading-[1.1] text-[#0000FF]">
+          Meet some of our Mykonos taxi drivers
           </h1>
         </div>
 
@@ -139,10 +139,10 @@ export default function DriverSection() {
       </div>
 
       {/* Slider Section */}
-      <div className="mt-10">
+      <div className="mt-10 ">
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto cursor-grab scroll-smooth scrollbar-hide"
+          className="flex gap-4 p-4 overflow-x-auto cursor-grab scroll-smooth scrollbar-hide"
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
         >
@@ -151,9 +151,8 @@ export default function DriverSection() {
               key={index}
               className="relative flex-shrink-0 w-60 h-auto ml-6 bg-white rounded-3xl p-4 pb-0"
               style={{
-                boxShadow: index === activeIndex 
-                  ? '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)' 
-                  : '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                boxShadow: 
+                  '10px 10px 30px rgba(0, 0, 0, 0.3), -3px 3px 7px rgba(0, 0, 0, 0.05)',
               }}
             >
                                   {/* Text Section */}

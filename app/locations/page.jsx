@@ -65,7 +65,7 @@ const LocationPage = () => {
       
       {/* Header and Text Section */}
       <div
-        className="relative bg-cover bg-center "
+        className="relative bg-cover bg-center  "
         style={{
           backgroundImage: `url(${Background.src})`,
           height: "367px",
@@ -112,7 +112,7 @@ const LocationPage = () => {
           <h1 className="text-4xl font-bold leading-[1.3]">taxi app</h1>
         </div>
 
-        <div className="relative mt-20 overflow-hidden p-[2px] rounded-t-3xl rounded-b-3xl bg-gradient-to-r from-[#49F352] via-blue-500 to-[#3C00FF] mask-image-[linear-gradient(to top, black, transparent),  linear-gradient(to bottom, black, transparent)] mask-repeat-no-repeat mask-size-[100%_20px, 100%_20px]">
+        <div className="relative mt-10 overflow-hidden p-[2px] rounded-t-3xl rounded-b-3xl bg-gradient-to-r from-[#49F352] via-blue-500 to-[#3C00FF] mask-image-[linear-gradient(to top, black, transparent),  linear-gradient(to bottom, black, transparent)] mask-repeat-no-repeat mask-size-[100%_20px, 100%_20px]">
           <div className="rounded-t-3xl rounded-b-3xl bg-[#F5F5F7]">
             {/* Input Fields Section */}
             <div className="mx-8 pt-6 rounded-xl">
@@ -217,7 +217,7 @@ const LocationPage = () => {
             </div>
 
             {/* Buttons Section */}
-            <div className="flex flex-row justify-between mt-2">
+            <div className="flex flex-row justify-between ">
               <button 
                 className="flex flex-col items-center justify-center w-36 h-20 bg-transparent rounded-xl text-black hover:bg-gray-100"
                 aria-label="Call Taxi"

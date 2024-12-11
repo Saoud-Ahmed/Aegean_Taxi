@@ -45,7 +45,7 @@ const TaxiCategories = () => {
     <div className="flex flex-col px-6 py-20  bg-[#F1F3FB] p-4 rounded-lg">
       {/* Heading Section */}
       <div className="text-left pb-4">
-        <h1 className="text-3xl font-bold leading-[1.1] bg-gradient-to-r from-blue-800 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold leading-[1.1] text-[#0000FF]">
           Mykonos taxi categories and car Options
         </h1>
       </div>
@@ -113,44 +113,46 @@ const TaxiCategories = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex flex-row justify-between mt-6 space-x-1">
-        <button className="bg-[#006FE1] h-[56px] text-white rounded-3xl flex items-center justify-center w-full px-4 space-x-3 hover:opacity-90 transition whitespace-nowrap">
-          {/* Icon on the left */}
-          <Image
-            src={OnlineIcon}
-            alt="Online Icon"
-            width={14}
-            height={14}
-            className="w-5 h-4 sm:w-8 sm:h-8 pl-1"
-          />
-          {/* Button text */}
-          <span className="text-sm sm:text-base font-bold text-white">
-            Book Online
-          </span>
-          {/* Arrow icon on the right */}
-          <Image
-            src={ArrowFront}
-            alt="Arrow Front"
-            width={14}
-            height={14}
-            className="w-5 h-4 sm:w-8 sm:h-8 pr-1"
-          />
-        </button>
-        <button className="bg-[#343434] h-[56px] text-white rounded-3xl flex items-center justify-center w-full px-4 space-x-3 hover:opacity-90 transition whitespace-nowrap">
-          {/* Button text */}
-          <span className="text-sm sm:text-base font-bold text-white">
-            Download the App
-          </span>
-          {/* Arrow icon on the right */}
-          <Image
-            src={ArrowDown}
-            alt="Arrow Down"
-            width={10}
-            height={10}
-            className="w-5 h-5 sm:w-5 sm:h-5"
-          />
-        </button>
-      </div>
+<div className="flex flex-row justify-between items-center mt-6 space-x-2">
+  <button className="bg-[#006FE1] h-[35px] sm:h-[32px] text-white rounded-3xl flex items-center justify-center w-full px-2 sm:px-4 space-x-2 sm:space-x-3 hover:opacity-90 transition whitespace-nowrap">
+    {/* Icon on the left */}
+    <Image
+      src={OnlineIcon}
+      alt="Online Icon"
+      width={14}
+      height={14}
+      className="w-4 h-4 sm:w-6 sm:h-6"
+    />
+    {/* Button text */}
+    <span className="text-xs sm:text-sm lg:text-base font-bold text-white">
+      Book Online
+    </span>
+    {/* Arrow icon on the right */}
+    <Image
+      src={ArrowFront}
+      alt="Arrow Front"
+      width={14}
+      height={14}
+      className="w-4 h-4 sm:w-6 sm:h-6"
+    />
+  </button>
+  
+  <button className="bg-[#343434] h-[36px] sm:h-[32px] text-white rounded-3xl flex items-center justify-center w-full px-2 sm:px-4 space-x-2 sm:space-x-3 hover:opacity-90 transition whitespace-nowrap">
+    {/* Button text */}
+    <span className="text-xs sm:text-sm lg:text-base font-bold text-white">
+      Download the App
+    </span>
+    {/* Arrow icon on the right */}
+    <Image
+      src={ArrowDown}
+      alt="Arrow Down"
+      width={10}
+      height={10}
+      className="w-4 h-4 sm:w-5 sm:h-5"
+    />
+  </button>
+</div>
+
     </div>
   );
 };

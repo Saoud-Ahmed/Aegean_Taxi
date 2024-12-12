@@ -60,7 +60,7 @@ const FindUs = () => {
                 <p className="text-[#646464]">{location.address}</p>
                 <a
                   href={location.navigateLink}
-                  className="text-blue-500 flex items-center mt-2"
+                  className="text-[#006FE1] flex items-center mt-2 py-2 px-1 -mx-1 hover:bg-blue-50 rounded"
                 >
                   Navigate
                   <Image
@@ -84,7 +84,7 @@ const FindUs = () => {
             Phone:&nbsp;
             <a
               href={location.phoneLink}
-              className="text-blue-500 underline"
+              className="text-[#006FE1] underline py-2 px-1 -mx-1 hover:bg-blue-50 rounded"
             >
               {location.phone}
             </a>
@@ -95,25 +95,22 @@ const FindUs = () => {
             Email:&nbsp;
             <a
               href={location.emailLink}
-              className="text-blue-500 underline"
+              className="text-[#006FE1] underline py-2 px-1 -mx-1 hover:bg-blue-50 rounded"
             >
               {location.email}
             </a>
           </p>
 
           {/* Services Section */}
-          
-
- {/* Services Section */}
  <div className="mt-4">
  <h3 className="font-semibold text-base">Services</h3>
  {Object.entries(location.services).map(([key, link]) => (
    <a
      key={key}
      href={link}
-     className={`flex items-center mt-1 text-[13px] ${
+     className={`flex items-center mt-1 text-[13px] py-2 px-1 -mx-1 hover:bg-blue-50 rounded ${
        key === "bookOnline"
-         ? "text-blue-500 underline"
+         ? "text-[#006FE1] underline"
          : "text-[#646464] underline"
      }`}
    >
@@ -133,7 +130,7 @@ const FindUs = () => {
           {/* Go to Link */}
           <a
             href={location.goToLink}
-            className="mt-6 block text-center px-4 py-2 bg-[#343434] text-white rounded-full font-bold text-sm"
+            className="mt-6 block text-center px-4 py-3 bg-[#343434] text-white rounded-full font-bold text-sm hover:bg-[#2c2c2c]"
           >
             Go to {location.name}
             <Image
@@ -151,35 +148,3 @@ const FindUs = () => {
 };
 
 export default FindUs;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

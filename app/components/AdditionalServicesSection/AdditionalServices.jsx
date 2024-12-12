@@ -4,6 +4,7 @@ import Image from "next/image";
 import ChildSeatIcon from "./assets/childseat.png";
 import SIMIcon from "./assets/localSIM.png";
 import beach from './assets/beach.png';
+
 export default function AdditionalServices() {
   const cards = [
     {
@@ -123,8 +124,6 @@ export default function AdditionalServices() {
     }
   }, [isDragging]);
 
-  
-
   return (
     <div className="my-20 flex flex-col">
       <div className="w-full mb-12">
@@ -132,14 +131,12 @@ export default function AdditionalServices() {
       </div>
       <div className="px-8">
         {/* Heading Section */}
-        <div className="text-left pb-4">
-          <h1 className="text-3xl font-bold leading-[1.1] bg-gradient-to-r from-blue-800 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-            Additional Services in 
-          </h1>
-          <h1 className="text-3xl font-bold leading-[1.1] bg-gradient-to-r from-blue-800 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-            Mykonos Island by our taxis
-          </h1>
-        </div>
+        <h1 className="text-3xl font-bold leading-[1.1] bg-gradient-to-r from-blue-800 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+          Additional Services in 
+        </h1>
+        <h2 className="text-3xl font-bold leading-[1.1] bg-gradient-to-r from-blue-800 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+          Mykonos Island by our taxis
+        </h2>
       </div>
 
       {/* Description */}
@@ -168,15 +165,15 @@ export default function AdditionalServices() {
                       height={50}
                     />
                   </div>
-                  <h1 className="text-lg pt-2 font-bold text-left">{card.heading}</h1>
-                  <h2 className="text-sm pt-2 font-light text-left">{card.text}</h2>
+                  <h3 className="text-lg pt-2 font-bold text-left">{card.heading}</h3>
+                  <p className="text-sm pt-2 font-light text-left">{card.text}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-            {/* Indicator Section */}
+        {/* Indicator Section */}
         <div className="flex justify-center mt-4 space-x-4">
           {cards.map((_, index) => (
             <button

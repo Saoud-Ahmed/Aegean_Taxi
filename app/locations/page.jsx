@@ -71,6 +71,7 @@ const LocationPage = () => {
           name="description"
           content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini bus options with transparent pricing."
         />
+        <meta httpEquiv="Content-Language" content="en-US" />
       </Head>
     
     <div className="relative">

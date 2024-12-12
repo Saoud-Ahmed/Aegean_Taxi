@@ -27,7 +27,7 @@ const Footer = () => {
         {/* Follow Us Section */}
         <div className="flex flex-col w-full mt-6">
           {/* "Follow us" Heading */}
-          <h3 className="text-blue-500 font-bold text-lg">Follow us</h3>
+          <h3 className="text-[#006FE1] font-bold text-lg">Follow us</h3>
 
           {/* Social Media Icons */}
           <div className="flex justify-center items-center space-x-6 mt-3">
@@ -73,7 +73,7 @@ const Footer = () => {
           <div className="w-full border-t border-gray-300 mt-6 mb-6"></div>
 
           {/* Sitemap Section */}
-          <h3 className="text-blue-500 font-bold text-lg">Sitemap</h3>
+          <h3 className="text-[#006FE1] font-bold text-lg">Sitemap</h3>
           <div className="grid grid-cols-2 gap-8 w-full mt-4">
             {/* Left Column */}
             <div className="space-y-3">
@@ -337,12 +337,12 @@ const Footer = () => {
           <div className="w-full border-t border-white mt-6 mb-6 pt-6">
                             <div className="flex flex-col items-center bg-white text-black space-y-3">
                         {/* Contact Us Button */}
-                        <button className="bg-blue-500 text-white text-lg font-bold py-2  rounded-xl w-full">
+                        <button className="bg-[#006FE1] text-white text-lg font-bold py-2  rounded-xl w-full">
                             Contact us
                         </button>
 
                         {/* Phone Number Button */}
-                        <button className="bg-blue-500 text-white text-lg font-bold py-2 rounded-xl w-full">
+                        <button className="bg-[#006FE1] text-white text-lg font-bold py-2 rounded-xl w-full">
                             +30 215 215 400
                         </button>
 

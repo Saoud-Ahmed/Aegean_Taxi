@@ -176,52 +176,53 @@ const AirportTransfers = () => {
             </div>
 
             
-                        {/* Buttons Section */}
-            <div className="flex flex-row w-full justify-between items-center  ">
-              {/* Call Button */}
-              <button 
-                className="flex flex-col  justify-center  bg-transparent rounded-xl text-black hover:bg-gray-100"
-                aria-label="Call Taxi"
-              >
-                <div>
-                <Image 
-                  src={Call} 
-                  alt="Phone icon" 
-                  width={60} 
-                  height={36} 
-                  className=" " 
-                />
-                <span className="font-medium text-[10px] text-white">Call</span>
-                </div>
-              </button>
+                              
+             {/* Buttons Section */}
+<div className="flex flex-row w-full justify-between items-center">
+  {/* Call Button */}
+  <button 
+    className="flex flex-col justify-center bg-transparent rounded-xl text-black hover:bg-gray-100"
+    aria-label="Call Taxi"
+  >
+    <div>
+      <Image 
+        src={Call} 
+        alt="Phone icon" 
+        width={60} 
+        height={36} 
+        className="" 
+      />
+      <span className="font-medium text-[10px] text-white">Call</span>
+    </div>
+  </button>
 
-              {/* Main Button */}
-              <button 
-                className="flex items-center mx-4 mb-auto justify-center w-full h-12 bg-black text-white rounded-xl font-bold hover:bg-gray-600"
-                aria-label="See prices and book taxi"
-              >
-                <span className="text-md">See prices & book</span>
-              </button>
+  {/* Main Button */}
+  <button 
+    className="flex items-center mx-4 mb-auto justify-center w-full h-12 bg-[#040080] text-white rounded-xl font-bold hover:bg-gray-600"
+    aria-label="See prices and book taxi"
+  >
+    <span className="text-md">See prices & book</span>
+  </button>
 
-              {/* WhatsApp Button */}
-              <button 
-                className="flex flex-col justify-center  bg-transparent rounded-xl text-black hover:bg-gray-100"
-                aria-label="Contact via WhatsApp"
-              >
-                <div className>
-                <Image 
-                  src={WhatsApp} 
-                  alt="WhatsApp contact icon" 
-                  width={65} 
-                  height={36} 
-                  className="" 
-                />
-               
-                <span className="font-medium text-[10px] text-white">WhatsApp</span>
-                </div>
-              </button>
+  {/* WhatsApp Button */}
+  <button 
+    className="flex flex-col justify-center bg-transparent rounded-xl text-black hover:bg-gray-100"
+    aria-label="Contact via WhatsApp"
+  >
+    <div className="">
+      <Image 
+        src={WhatsApp} 
+        alt="WhatsApp contact icon" 
+        width={65} 
+        height={36} 
+        className="" 
+      />
+      <span className="font-medium text-[10px] text-white">WhatsApp</span>
+    </div>
+  </button>
+</div>
               
-            </div>
+           
 
           </main>
         </div>

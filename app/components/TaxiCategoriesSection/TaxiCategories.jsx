@@ -114,7 +114,7 @@ const TaxiCategories = () => {
 
       {/* Action Buttons */}
 <div className="flex flex-row justify-between items-center mt-6 space-x-2">
-  <button className="bg-[#006FE1] h-[35px] sm:h-[32px] text-white rounded-3xl flex items-center justify-center w-full px-2 sm:px-4 space-x-2 sm:space-x-3 hover:opacity-90 transition whitespace-nowrap">
+  <button className="bg-[#004080] h-[35px] sm:h-[32px] text-white rounded-3xl flex items-center justify-center w-full px-2 sm:px-4 space-x-2 sm:space-x-3 hover:opacity-90 transition whitespace-nowrap">
     {/* Icon on the left */}
     <Image
       src={OnlineIcon}

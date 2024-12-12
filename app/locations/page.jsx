@@ -177,9 +177,9 @@ const LocationPage = () => {
               {cars.map((car, index) => (
                 <div
                   key={index}
-                  className="relative flex-shrink-0 w-40 h-60"
+                  className="relative flex-shrink-0 w-[35%] h-60"
                 >
-                  <div className="relative mt-8 border w-[150px] rounded-3xl bg-[#E2E6E9] shadow-lg p-4 pl-10 z-0">
+                  <div className="relative mt-8 border rounded-3xl bg-[#E2E6E9] shadow-lg p-4 pl-auto pr-auto z-0 mr-4">
                     <div className="absolute w-full -top-5 left-0 flex justify-center">
                       <Image 
                         src={car.imageSrc} 
@@ -267,12 +267,7 @@ const LocationPage = () => {
               </button>
             </div>
 
-            {/* Text Section */}
-            <div className="text-[#696C74] text-center pb-4">
-              <h2 className="text-2xl font-bold leading-[1.1]">The fastest, cheapest</h2>
-              <h2 className="text-2xl font-bold leading-[1.1]">and easiest way to book</h2>
-              <h2 className="text-2xl font-bold leading-[1.1]">your taxi in Mykonos</h2>
-            </div>    
+             
           </div>
         </div>
         

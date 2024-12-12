@@ -22,6 +22,18 @@ export default function BookSection() {
   const scrollRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Smooth scroll functionality
+  const smoothScrollToIndex = (newIndex) => {
+    if (scrollRef.current) {
+      const cardWidth = 240; // Matches the exact width of each card
+      scrollRef.current.scrollTo({
+        left: newIndex * cardWidth,
+        behavior: 'smooth' // This creates a smooth scrolling effect
+      });
+      setActiveIndex(newIndex);
+    }
+  };
+
   // Handle drag functionality for desktop
   const handleMouseDown = (e) => {
     if (!scrollRef.current) return;
@@ -32,7 +44,7 @@ export default function BookSection() {
     const handleMouseMove = (e) => {
       if (!scrollRef.current) return;
       const x = e.clientX;
-      const walk = (startX - x) * 2; // 2 is the scroll speed multiplier
+      const walk = (startX - x) * 1.5; // Reduced multiplier for smoother scrolling
       scrollRef.current.scrollLeft = scrollLeft + walk;
     };
 
@@ -40,7 +52,6 @@ export default function BookSection() {
       if (!scrollRef.current) return;
       scrollRef.current.removeEventListener("mousemove", handleMouseMove);
       scrollRef.current.removeEventListener("mouseup", handleMouseUp);
-      // Calculate and update active index
       updateActiveIndex();
     };
 
@@ -58,7 +69,7 @@ export default function BookSection() {
     const handleTouchMove = (e) => {
       if (!scrollRef.current) return;
       const x = e.touches[0].clientX;
-      const walk = (startX - x) * 2; // 2 is the scroll speed multiplier
+      const walk = (startX - x) * 1.5; // Reduced multiplier for smoother scrolling
       scrollRef.current.scrollLeft = scrollLeft + walk;
     };
 
@@ -66,7 +77,6 @@ export default function BookSection() {
       if (!scrollRef.current) return;
       scrollRef.current.removeEventListener("touchmove", handleTouchMove);
       scrollRef.current.removeEventListener("touchend", handleTouchEnd);
-      // Calculate and update active index
       updateActiveIndex();
     };
 
@@ -80,10 +90,9 @@ export default function BookSection() {
   
     const cardWidth = 240; // Ensure this matches the exact width of each card
     const scrollPosition = scrollRef.current.scrollLeft;
-    const newIndex = Math.floor(scrollPosition / cardWidth); // Using Math.floor to avoid rounding off
+    const newIndex = Math.round(scrollPosition / cardWidth); // Using Math.round for more accurate index
     setActiveIndex(Math.min(Math.max(newIndex, 0), cards.length - 1));
   };
-  
 
   // Add scroll event listener to update active index
   useEffect(() => {
@@ -100,23 +109,16 @@ export default function BookSection() {
     }
   }, []);
 
-  
+  // Modified click handlers to use smooth scroll
   const handleLeftClick = () => {
-    if (scrollRef.current) {
-      const newIndex = Math.max(activeIndex - 1, 0);
-      scrollRef.current.scrollLeft = newIndex * 240;
-      setActiveIndex(newIndex);
-    }
+    const newIndex = Math.max(activeIndex - 1, 0);
+    smoothScrollToIndex(newIndex);
   };
 
   const handleRightClick = () => {
-    if (scrollRef.current) {
-      const newIndex = Math.min(activeIndex + 1, cards.length - 1);
-      scrollRef.current.scrollLeft = newIndex * 240;
-      setActiveIndex(newIndex);
-    }
+    const newIndex = Math.min(activeIndex + 1, cards.length - 1);
+    smoothScrollToIndex(newIndex);
   };
-
 
   return (
     <div className="my-20 flex flex-col bg-white">
@@ -148,84 +150,83 @@ export default function BookSection() {
       </div>
 
       <div className="my-4">
-  <div
-    ref={scrollRef}
-    className="flex gap-4 mb-4 overflow-x-auto mt-0 cursor-grab scroll-smooth scrollbar-hide"
-    onMouseDown={handleMouseDown}
-    onTouchStart={handleTouchStart}
-  >
-    {cards.map((card, index) => (
-      <div
-        key={index}
-        className="relative flex-shrink-0 w-60 h-full ml-6"
-      >
-        <div className="relative w-full h-full rounded-3xl p-4 pb-7 pl-5">
-          <div className="flex justify-left">
-            <Image
-              src={card.imgsrc}
-              alt={card.heading}
-              width={250}
-              height={250}
-              className="rounded-lg"
-            />
-          </div>
-          <h3 className="text-lg pt-2 font-bold text-left ml-2">{card.heading}</h3>
-          <div className="flex items-center mt-2">
-            <Image
-              src={CarSVG}
-              alt="Cars"
-              width={24}
-              height={24}
-              className="mr-2 text-blue-500"
-            />
-            <p className="text-sm font-light text-left">{card.cars}</p>
-          </div>
+        <div
+          ref={scrollRef}
+          className="flex gap-4 mb-4 overflow-x-auto mt-0 cursor-grab scroll-smooth scrollbar-hide"
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
+        >
+          {cards.map((card, index) => (
+            <div
+              key={index}
+              className="relative flex-shrink-0 w-60 h-full ml-6"
+            >
+              <div className="relative w-full h-full rounded-3xl p-4 pb-7 pl-5">
+                <div className="flex justify-left">
+                  <Image
+                    src={card.imgsrc}
+                    alt={card.heading}
+                    width={250}
+                    height={250}
+                    className="rounded-lg"
+                  />
+                </div>
+                <h3 className="text-lg pt-2 font-bold text-left ml-2">{card.heading}</h3>
+                <div className="flex items-center mt-2">
+                  <Image
+                    src={CarSVG}
+                    alt="Cars"
+                    width={24}
+                    height={24}
+                    className="mr-2 text-blue-500"
+                  />
+                  <p className="text-sm font-light text-left">{card.cars}</p>
+                </div>
 
-          <div className="flex items-center mt-2">
-            <Image
-              src={CategorySVG}
-              alt="Categories"
-              width={24}
-              height={24}
-              className="mr-2 text-blue-500"
-            />
-            <p className="text-sm font-light text-left">{card.categories}</p>
-          </div>
+                <div className="flex items-center mt-2">
+                  <Image
+                    src={CategorySVG}
+                    alt="Categories"
+                    width={24}
+                    height={24}
+                    className="mr-2 text-blue-500"
+                  />
+                  <p className="text-sm font-light text-left">{card.categories}</p>
+                </div>
 
-          <div className="flex items-center mt-2">
-            <Image
-              src={OperationSVG}
-              alt="Operation"
-              width={24}
-              height={24}
-              className="mr-2 text-blue-500"
-            />
-            <p className="text-sm font-light text-left">{card.operation}</p>
-          </div>
-          <button className="mt-4 px-6 py-2 bg-[#004080] text-white rounded-full">Book Mykonos Taxi</button>
-          <div className="flex items-center justify-center mt-4">
-          <a
-            href="#"
-            className="block text-center text-[#004080] underline"
-          >
-            Find us in Mykonos
-          </a>
-          <Image
-            src={Arrow}
-            alt="Find us icon"
-            className="ml-2"
-            width={20}
-            height={20}
-          />
+                <div className="flex items-center mt-2">
+                  <Image
+                    src={OperationSVG}
+                    alt="Operation"
+                    width={24}
+                    height={24}
+                    className="mr-2 text-blue-500"
+                  />
+                  <p className="text-sm font-light text-left">{card.operation}</p>
+                </div>
+                <button className="mt-4 px-6 py-2 bg-[#004080] text-white rounded-full">Book Mykonos Taxi</button>
+                <div className="flex items-center justify-center mt-4">
+                  <a
+                    href="#"
+                    className="block text-center text-[#004080] underline"
+                  >
+                    Find us in Mykonos
+                  </a>
+                  <Image
+                    src={Arrow}
+                    alt="Find us icon"
+                    className="ml-2"
+                    width={20}
+                    height={20}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        </div>
-      </div>
-    ))}
-  </div>
 
-
-{/* Indicator Section */}
-<div className="flex justify-center items-center mt-8">
+        {/* Indicator Section */}
+        <div className="flex justify-center items-center mt-8">
           <button
             onClick={handleLeftClick}
             className="w-8 h-8 bg-gray-300 rounded-full flex justify-center items-center mr-4"
@@ -233,23 +234,18 @@ export default function BookSection() {
           >
             <Image src={NavArrow} alt="Left arrow" className="w-4 h-4 rotate-180" />
           </button>
-              <div className="flex justify-center mt-2 space-x-2">
-                {Array(9).fill().map((_, index) => {
-                  // Calculate the actual index based on the first 9 dots and total cards
-                  
-
-                  return (
-                    <div 
-                      key={index}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ease-in-out ${
-                        index === (activeIndex % 9)
-                          ? 'bg-black w-3 h-3'
-                          : 'bg-gray-300'
-                      }`}
-                    />
-                  );
-                })}
-              </div>
+          <div className="flex justify-center mt-2 space-x-2">
+            {Array(9).fill().map((_, index) => (
+              <div 
+                key={index}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ease-in-out ${
+                  index === (activeIndex % 9)
+                    ? 'bg-black w-3 h-3'
+                    : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
           <button
             onClick={handleRightClick}
             className="w-8 h-8 bg-gray-300 rounded-full flex justify-center items-center ml-4"
@@ -257,7 +253,7 @@ export default function BookSection() {
           >
             <Image src={NavArrow} alt="Right arrow" className="w-4 h-4" />
           </button>
-      </div>
+        </div>
       </div>
     </div>
   );

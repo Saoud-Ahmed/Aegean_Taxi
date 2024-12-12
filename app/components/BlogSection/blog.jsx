@@ -88,7 +88,7 @@ export default function Blogs() {
 
       {/* CTA Button */}
       <div className="flex justify-center mt-6 mb-4">
-        <button className="flex justify-center items-center py-3 w-full mx-8 bg-[#067DF9] text-white text-lg font-semibold rounded-2xl hover:bg-gray-800">
+        <button className="flex justify-center items-center py-3 w-full mx-8 bg-[#006FE1] text-white text-lg font-semibold rounded-2xl hover:bg-gray-800">
           <span className="">Go to Blog</span>
         </button>
       </div>

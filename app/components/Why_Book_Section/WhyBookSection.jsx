@@ -170,9 +170,9 @@ export default function WhyBookSection() {
                     height={50}
                   />
                 </div>
-                <h3 id={`card-heading-${index}`} className="text-lg pt-2 font-bold text-left">
+                <h1 id={`card-heading-${index}`} className="text-lg pt-2 font-bold text-left">
                   {card.heading}
-                </h3>
+                </h1>
                 <p className="text-sm pt-2 font-light text-left">{card.text}</p>
               </div>
             </article>

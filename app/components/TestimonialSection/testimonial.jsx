@@ -14,18 +14,10 @@ const feedbacks = [
   {
     img: PersonImg,
     name: "Matt Williams",
-    bgColor: "#4DADE1",
+    bgColor: "#006FE1",
     stars: 5,
     feedback: "We have used the app several times, We have used the app several times We have used the app several times",
     date: "July 2024",
-  },
-  {
-    img: PersonImg,
-    name: "Emily Johnson",
-    bgColor: "#B1B0B0",
-    stars: 5,
-    feedback: "We have used the app several times, We have used the app several times We have used the app several times",
-    date: "May 2024",
   },
   {
     img: PersonImg,
@@ -37,8 +29,16 @@ const feedbacks = [
   },
   {
     img: PersonImg,
+    name: "Emily Johnson",
+    bgColor: "#264653",
+    stars: 5,
+    feedback: "We have used the app several times, We have used the app several times We have used the app several times",
+    date: "May 2024",
+  },
+  {
+    img: PersonImg,
     name: "Sophia Brown",
-    bgColor: "#B1B0B0",
+    bgColor: 'black',
     stars: 4,
     feedback: "We have used the app several times, We have used the app several times We have used the app several times",
     date: "June 2024",
@@ -184,7 +184,6 @@ const Testimonial = () => {
       <div className="text-left px-4 mx-8">
         <h2
           className="text-4xl font-bold text-[#0000FF] bg-clip-text mb-2"
-         
         >
           Testimonials
         </h2>

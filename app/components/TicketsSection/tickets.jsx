@@ -113,9 +113,9 @@ const TaxiPrices = () => {
             } shadow-sm`}
           >
             {/* From */}
-            <div className="flex items-center text-left justify-right gap-1 ml-4">
+            <div className="flex items-center text-black text-left justify-right gap-1 ml-4">
               
-              <span>{ticket.from.name}</span>
+              <span className="text-black">{ticket.from.name}</span>
               <Image
                 src={ticket.from.icon}
                 alt={ticket.from.name}
@@ -137,7 +137,7 @@ const TaxiPrices = () => {
             </div>
 
             {/* To */}
-            <div className="flex items-center text-left justify-center gap-2">
+            <div className="flex text-black items-center text-left justify-center gap-2">
             <Image
                 src={ticket.to.icon}
                 alt={ticket.to.name}
@@ -150,7 +150,7 @@ const TaxiPrices = () => {
 
             {/* Price */}
             <div className="flex flex-col items-center">
-              <span className="text-gray-500">{ticket.price.type}</span>
+              <span className="text-black">{ticket.price.type}</span>
               <span className="text-[#174FCD] font-semibold text-lg">
                 {ticket.price.amount}
               </span>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Head from "next/head";
 import HamgurgerIcon from "./assets/hamburgerIcon.svg";
 import Logo from "./assets/logo.svg";
 import AppleStore from "./assets/apple.svg";
@@ -10,8 +11,8 @@ import MiniVan from "./assets/mini-bus.svg";
 import Background from "./assets/background.png";
 import PickUpIcon from "./assets/pickupicon.svg";
 import DestinationIcon from "./assets/destination-icon.svg";
-import PersonIcon from "./assets/personIcon.png";
-import BagIcon from "./assets/bagIcon.png";
+import PersonIcon from "./assets/personIcon.svg";
+import BagIcon from "./assets/bagIcon.svg";
 import ClockIcon from "./assets/clockIcon.png";
 
 import WhyBookSection from "../components/Why_Book_Section/WhyBookSection";
@@ -61,8 +62,19 @@ const cars = [
 
 const LocationPage = () => {
   return (
+    
+
+    <>
+    <Head>
+        <title>Aegean Taxi - Your Mykonos Taxi App</title>
+        <meta
+          name="description"
+          content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini bus options with transparent pricing."
+        />
+      </Head>
+    
     <div className="relative">
-      
+     
       {/* Header and Text Section */}
       <div
         className="relative bg-cover bg-center  "
@@ -160,19 +172,21 @@ const LocationPage = () => {
             </div>
 
             {/* Slider Section */}
-            <div className="flex mx-8 gap-4 overflow-x-auto mt-0 w-full relative z-0">
+            <div className="flex mx-8 gap-1 overflow-x-auto mt-0 w-full relative z-0">
               {cars.map((car, index) => (
                 <div
                   key={index}
                   className="relative flex-shrink-0 w-40 h-60"
                 >
-                  <div className="relative mt-8 border rounded-3xl bg-[#E2E6E9] shadow-lg p-4 pl-10 z-0">
-                    <div className="absolute w-full -top-5 left-1 flex justify-center">
+                  <div className="relative mt-8 border w-[150px] rounded-3xl bg-[#E2E6E9] shadow-lg p-4 pl-10 z-0">
+                    <div className="absolute w-full -top-5 left-0 flex justify-center">
                       <Image 
                         src={car.imageSrc} 
                         alt={`${car.name} taxi`} 
-                        width={120} 
+                        width={100} 
                         height={70} 
+                        objectFit="cover"
+                        priority
                       />
                     </div>
                     <h2 className="text-lg pt-8 font-bold text-left">{car.name}</h2>
@@ -274,6 +288,7 @@ const LocationPage = () => {
         <Footer />
       </div>
     </div>
+    </>
   );
 };
 

@@ -2,13 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
+import Head from "next/head";
 
 import HamgurgerIcon from "./assets/hamburger.png";
 import Logo from "./assets/logo.png";
 import AppleStore from "./assets/apple.png";
 import Maps from "./assets/img.png";
-import Call from "./assets/phone.png";
-import WhatsApp from "./assets/whatsapp.png";
 import PickUpIcon from "./assets/pickupicon.png";
 import DestinationIcon from "./assets/destination-icon.png";
 
@@ -23,6 +22,16 @@ import HowToBookSection from "../components/HowToBook/HowBook";
 
 const AirportTransfers = () => {
   return (
+
+
+    <>
+    <Head>
+        <title>Aegean Taxi - Your Mykonos Taxi App</title>
+        <meta
+          name="description"
+          content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini bus options with transparent pricing."
+        />
+      </Head>
     <div className="">
       {/* Hero Section */}
       <div 
@@ -77,6 +86,7 @@ const AirportTransfers = () => {
                 width={500}
                 height={220}
                 className="w-full h-full object-cover"
+                priority
               />
             </div>
           </div>
@@ -132,32 +142,6 @@ const AirportTransfers = () => {
           </div>
         </main>
 
-        {/* Buttons Section */}
-        <div className="flex flex-row justify-between  space-x-1">
-          <button className="flex flex-col items-center justify-center w-[30%] aspect-square bg-transparent rounded-xl text-white hover:bg-gray-100 transition-colors">
-            <Image 
-              src={Call} 
-              alt="Phone" 
-              width={46} 
-              height={36} 
-              className="mb-1 " 
-            />
-            <span className="font-medium text-[10px]">Call</span>
-          </button>
-          <button className="flex items-center justify-center  mt-2 h-12 w-full bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-colors">
-            <span className="text-sm">Book Online</span>
-          </button>
-          <button className="flex flex-col items-center justify-center w-[30%] aspect-square bg-transparent rounded-xl text-white hover:bg-gray-100 transition-colors">
-            <Image
-              src={WhatsApp}
-              alt="WhatsApp"
-              width={50}
-              height={36}
-              className="mb-1"
-            />
-            <span className="font-medium text-[10px]">WhatsApp</span>
-          </button>
-        </div>
       </div>
 
       <WhyBookSection/>
@@ -169,6 +153,7 @@ const AirportTransfers = () => {
       <FAQs />
       <Blog />
     </div>
+    </>
   );
 };
 

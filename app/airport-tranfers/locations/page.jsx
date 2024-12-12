@@ -2,6 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
+import { Helmet } from 'react-helmet';
+
 
 // Dynamic imports to lazy load non-critical components
 const TicketSection = React.lazy(() => import("../../components/AirportTickets/AirportTickets"));
@@ -27,6 +29,16 @@ import DestinationIcon from "./assets/destination-icon.svg";
 
 const AirportTransfers = () => {
   return (
+
+    <>
+    <Helmet>
+        <title>Aegean Taxi - Your Mykonos Taxi App</title>
+        <meta
+          name="description"
+          content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini bus options with transparent pricing."
+        />
+        <meta httpEquiv="Content-Language" content="en-US" />
+      </Helmet>
     <div className="bg-white">
       {/* Header Section */}
       <header className="bg-transparent flex flex-row items-center justify-between px-8 py-2">
@@ -144,6 +156,7 @@ const AirportTransfers = () => {
         <FindUsSection />
       </React.Suspense>
     </div>
+    </>
   );
 };
 

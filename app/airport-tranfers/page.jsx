@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import Head from "next/head";
+import { Helmet } from 'react-helmet';
+
 
 import HamgurgerIcon from "./assets/hamburger.png";
 import Logo from "./assets/logo.png";
@@ -25,13 +26,15 @@ const AirportTransfers = () => {
 
 
     <>
-    <Head>
+    
+      <Helmet>
         <title>Aegean Taxi - Your Mykonos Taxi App</title>
         <meta
           name="description"
           content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini bus options with transparent pricing."
         />
-      </Head>
+        <meta httpEquiv="Content-Language" content="en-US" />
+      </Helmet>
     <div className="">
       {/* Hero Section */}
       <div 

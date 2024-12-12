@@ -188,7 +188,7 @@ const Testimonial = () => {
           Testimonials
         </h2>
 
-        <p className="text-gray-600 text-left">
+        <p className="text-black text-left">
           What travellers who booked an airport transfer in Mykonos say about our service
         </p>
       </div>
@@ -266,7 +266,7 @@ const Testimonial = () => {
                 height={100}
               />
             </div>
-            <a href="#" className="px-2 self-start  text-blue-500 hover:underline text-sm mb-2 ml-1">
+            <a href="#" className="px-2 self-start  text-[#174FCD] hover:underline text-sm mb-2 ml-1">
               Go to Trustpilot →
             </a>
           </div>
@@ -283,7 +283,7 @@ const Testimonial = () => {
               />
               
             </div>
-            <a href="#" className="text-blue-500 hover:underline text-sm mb-2">
+            <a href="#" className="text-[#174FCD] hover:underline text-sm mb-2">
               Go to Tripadvisor →
             </a>
           </div>

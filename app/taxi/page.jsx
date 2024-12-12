@@ -23,6 +23,16 @@ import Footer from "../components/Footer/footer";
 
 const LocationPage = () => {
   return (
+      <>
+            
+        <Helmet>
+        <title>Aegean Taxi - Your Mykonos Taxi App</title>
+        <meta
+          name="description"
+          content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini bus options with transparent pricing."
+        />
+        <meta httpEquiv="Content-Language" content="en-US" />
+        </Helmet>
     <div className="relative bg-white">
       {/* Header and Text Section */}
       <div
@@ -195,6 +205,7 @@ const LocationPage = () => {
       <FindUsSection />
       <Footer />
     </div>
+    </>
   );
 };
 

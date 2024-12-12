@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Helmet } from 'react-helmet';
+import Head from "next/head";
 
 
 // Dynamic imports to lazy load non-critical components
@@ -31,14 +31,13 @@ const AirportTransfers = () => {
   return (
 
     <>
-    <Helmet>
+    <Head>
         <title>Aegean Taxi - Your Mykonos Taxi App</title>
-        <meta
-          name="description"
-          content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini bus options with transparent pricing."
-        />
-        <meta httpEquiv="Content-Language" content="en-US" />
-      </Helmet>
+        <meta name="description" content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini-bus options with transparent pricing." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <html lang="en" />
+      </Head>
     <div className="bg-white">
       {/* Header Section */}
       <header className="bg-transparent flex flex-row items-center justify-between px-8 py-2">

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Head from "next/head";
+
 import HamgurgerIcon from "./assets/hamburgerIcon.svg";
 import Logo from "./assets/logo.svg";
 import AppleStore from "./assets/apple.svg";
@@ -21,18 +23,17 @@ import DriverSection from "../components/Driver Section/drivers";
 import FindUsSection from "../components/FindUsSsection/findus";
 import Footer from "../components/Footer/footer";
 
-const LocationPage = () => {
+const Taxi = () => {
   return (
       <>
             
-        <Helmet>
+            <Head>
         <title>Aegean Taxi - Your Mykonos Taxi App</title>
-        <meta
-          name="description"
-          content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini bus options with transparent pricing."
-        />
-        <meta httpEquiv="Content-Language" content="en-US" />
-        </Helmet>
+        <meta name="description" content="Book the fastest, cheapest, and easiest taxi in Mykonos. Choose from standard, van, and mini-bus options with transparent pricing." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <html lang="en" />
+      </Head>
     <div className="relative bg-white">
       {/* Header and Text Section */}
       <div
@@ -209,4 +210,4 @@ const LocationPage = () => {
   );
 };
 
-export default LocationPage;
+export default Taxi;

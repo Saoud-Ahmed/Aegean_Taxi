@@ -12,6 +12,8 @@ import AppleStore from "./assets/apple.png";
 import Maps from "./assets/img.png";
 import PickUpIcon from "./assets/pickupicon.png";
 import DestinationIcon from "./assets/destination-icon.png";
+import Call from "./assets/call.svg";
+import WhatsApp from "./assets/whatsapp.svg";
 
 // Dynamic imports for components to reduce initial bundle size
 const WhyBookSection = dynamic(() => import('../components/Why_Book_Section/WhyBookSection'), { 
@@ -101,11 +103,12 @@ const AirportTransfers = () => {
           </header>
 
           {/* Main Section */}
-          <main className="mx-[5%] flex flex-col justify-center space-y-[3%]">
-            <div className="flex flex-col items-center text-left text-white space-y-[3%]">
-              <h1 className="text-2xl md:text-3xl text-3xl font-bold text-left">
+          <main className="mx-[5%] flex flex-col my-auto space-y-[5%]">
+          <h1 className="text-2xl md:text-3xl text-3xl text-white font-bold text-left">
                 Airport transfers for all airports in Greece
               </h1>
+            <div className="flex flex-col items-center text-left text-white space-y-[3%]">
+              
               
               <div className="w-full max-w-lg h-[40%] min-h-[200px]">
                 <Image
@@ -122,7 +125,7 @@ const AirportTransfers = () => {
               </div>
             </div>
 
-            <h2 className="text-white font-bold text-lg text-center">
+            <h2 className="text-white font-bold text-lg text-left">
               Request an airport taxi ride
             </h2>
 
@@ -171,6 +174,55 @@ const AirportTransfers = () => {
                 </div>
               </div>
             </div>
+
+            
+                        {/* Buttons Section */}
+            <div className="flex flex-row w-full justify-between items-center  ">
+              {/* Call Button */}
+              <button 
+                className="flex flex-col  justify-center  bg-transparent rounded-xl text-black hover:bg-gray-100"
+                aria-label="Call Taxi"
+              >
+                <div>
+                <Image 
+                  src={Call} 
+                  alt="Phone icon" 
+                  width={60} 
+                  height={36} 
+                  className=" " 
+                />
+                <span className="font-medium text-[10px] text-white">Call</span>
+                </div>
+              </button>
+
+              {/* Main Button */}
+              <button 
+                className="flex items-center mx-4 mb-auto justify-center w-full h-12 bg-black text-white rounded-xl font-bold hover:bg-gray-600"
+                aria-label="See prices and book taxi"
+              >
+                <span className="text-md">See prices & book</span>
+              </button>
+
+              {/* WhatsApp Button */}
+              <button 
+                className="flex flex-col justify-center  bg-transparent rounded-xl text-black hover:bg-gray-100"
+                aria-label="Contact via WhatsApp"
+              >
+                <div className>
+                <Image 
+                  src={WhatsApp} 
+                  alt="WhatsApp contact icon" 
+                  width={65} 
+                  height={36} 
+                  className="" 
+                />
+               
+                <span className="font-medium text-[10px] text-white">WhatsApp</span>
+                </div>
+              </button>
+              
+            </div>
+
           </main>
         </div>
 

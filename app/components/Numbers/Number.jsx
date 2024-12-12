@@ -39,9 +39,14 @@ export default function Number() {
                 className="mx-auto mb-2 sm:mb-4 w-[50px] sm:w-[80px]"
               />
               <div className="text-base sm:text-xl font-semibold mb-2 sm:mb-4">20</div>
-              <p className="text-xs sm:text-sm text-black font-light">
-                <strong className="font-bold">Location</strong> Operating
+              <div className="flex-col">
+              <p className="text-xs sm:text-sm text-black font-bold">
+                Locations
               </p>
+              <p className="text-xs sm:text-sm text-black font-light">
+                 Operating
+              </p>
+              </div>
             </div>
             
             {/* Vertical Line */}
@@ -57,9 +62,14 @@ export default function Number() {
                 className="mx-auto mb-2 sm:mb-4 w-[50px] sm:w-[80px]"
               />
               <div className="text-base sm:text-xl font-semibold mb-2 sm:mb-4">12</div>
-              <p className="text-xs sm:text-sm text-black font-light">
-                <strong className="font-bold">Airports</strong> Servicing
+              <div className="flex-col">
+              <p className="text-xs sm:text-sm text-black font-bold">
+                Airpprt
               </p>
+              <p className="text-xs sm:text-sm text-black font-light">
+                 Servicing
+              </p>
+              </div>
             </div>
             
             {/* Vertical Line */}
@@ -75,9 +85,14 @@ export default function Number() {
                 className="mx-auto mb-2 sm:mb-4 w-[50px] sm:w-[80px]" 
               />
               <div className="text-base sm:text-xl font-semibold mb-2 sm:mb-4">22</div>
-              <p className="text-xs sm:text-sm text-black font-light">
-                <strong className="font-bold">Ports</strong> Present
+              <div className="flex-col">
+              <p className="text-xs sm:text-sm text-black font-bold">
+                Ports
               </p>
+              <p className="text-xs sm:text-sm text-black font-light">
+                 Present
+              </p>
+              </div>
             </div>
 
             {/* Second Row */}
@@ -91,9 +106,14 @@ export default function Number() {
                 className="mx-auto mb-2 sm:mb-4 w-[50px] sm:w-[80px]" 
               />
               <div className="text-base sm:text-xl font-semibold mb-2 sm:mb-4">2.5M</div>
-              <p className="text-xs sm:text-sm text-black font-light">
-                <strong className="font-bold">Clients</strong> Served
+              <div className="flex-col">
+              <p className="text-xs sm:text-sm text-black font-bold">
+                Client
               </p>
+              <p className="text-xs sm:text-sm text-black font-light">
+                 Served
+              </p>
+              </div>
             </div>
             
             {/* Vertical Line */}
@@ -109,9 +129,14 @@ export default function Number() {
                 className="mx-auto mb-2 sm:mb-4 w-[50px] sm:w-[80px]" 
               />
               <div className="text-base sm:text-xl font-semibold mb-2 sm:mb-4">1.5M+</div>
-              <p className="text-xs sm:text-sm text-black font-light">
-                <strong className="font-bold">Rides</strong> Completed
+              <div className="flex-col">
+              <p className="text-xs sm:text-sm text-black font-bold">
+                Rides
               </p>
+              <p className="text-xs sm:text-sm text-black font-light">
+                 Completed
+              </p>
+              </div>
             </div>
             
             {/* Vertical Line */}
@@ -127,9 +152,14 @@ export default function Number() {
                 className="mx-auto mb-2 sm:mb-4 w-[50px] sm:w-[80px]" 
               />
               <div className="text-base sm:text-xl mb-2 sm:mb-3">500k+</div>
+              <div className="flex-col">
               <p className="text-xs sm:text-sm text-black font-light">
-                App <strong className="font-bold">Downloads</strong>
+                App
               </p>
+              <p className="text-xs sm:text-sm text-black font-bold">
+                 Download
+              </p>
+              </div>
             </div>
           </div>
 

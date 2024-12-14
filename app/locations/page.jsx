@@ -105,7 +105,7 @@ const LocationPage = () => {
             />
           </div>
           <button 
-            className="ml-6 h-10 bg-white px-4 py-2 rounded-xl flex items-center border border-black"
+            className="ml-auto h-10 bg-white  py-2 rounded-xl flex items-center border border-black"
             aria-label="Download on App Store"
           >
             <Image 

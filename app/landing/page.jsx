@@ -84,7 +84,7 @@ const LandingPage = () => {
             </div>
             
             <button 
-              className="ml-6 h-10 bg-black border-1 border-white px-4 py-2 rounded-xl flex items-center border border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="ml-auto h-10 bg-black border-1 border-white  py-2 rounded-xl flex items-center border border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
               aria-label="Download on App Store"
             >
               <Image 

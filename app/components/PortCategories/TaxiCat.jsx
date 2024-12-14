@@ -83,18 +83,17 @@ const TaxiCat = () => {
     </div>
 
   </div>
-    <div className="flex flex-col mx-6 my-2  rounded-lg">
+    <div className="flex flex-col mx-6 mt-2 mb-10  rounded-lg">
       {/* Heading Section */}
       <div className="text-left pb-4">
         <h1 className="text-3xl font-bold leading-[1.1] text-[#0000FF] bg-clip-text text-[#0000FF]">
-          Taxi car categories
+        Port taxi categories and car types available across ports in Greece
         </h1>
       </div>
 
       {/* Description */}
       <p className="text-[#5E5E5E] text-[20px] font-bold mb-8">
-      From taxis to luxury cars, you  
-      choose the right ride for you
+      We offer a broad range of taxis and private cars for you to choose from, according to your group size and needs. From taxis to buses and more
       </p>
 
       {/* Slider Section */}

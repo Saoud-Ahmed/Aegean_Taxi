@@ -1,0 +1,57 @@
+@media (max-height: 746px) {
+    .car_images{
+        width: 85px;
+        object-fit: cover;
+    }
+
+    .car_name{
+        padding-top: 1rem;
+    }
+
+    .car_height{
+        height: 12rem;
+    }
+
+    .car_input{
+        padding: 0.5rem;
+        padding-left: 3rem;
+    }
+
+    .rod{
+        position: absolute;
+        top: 14px;
+    }
+
+    .field_inputs{
+        padding-top: 1rem;
+    }
+
+    .car_card{
+        margin-top: 1.5rem;
+    }
+
+    .car_call{
+        width: 35px;
+
+    }
+
+    .car_whatsapp{
+        width: 40px;
+
+    }
+    .car_seeprices{
+        height: 2.5rem;
+    }
+
+    .car_overlay{
+        margin-top: 1.25rem;
+    }
+
+    .car_text_mykonos{
+        margin: 1.25rem;
+    }
+
+    .call_mykonos{
+        height: 4rem;
+    }
+}

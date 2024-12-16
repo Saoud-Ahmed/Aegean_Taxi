@@ -78,7 +78,7 @@ const Taxi = () => {
 
         {/* Text Section */}
         <div className="mx-4 my-10 text-black">
-          <h1 className="text-4xl font-bold leading-[1.3]">Your Taxi App</h1>
+        <h1 className="text-4xl font-bold leading-[1.3]">Your Taxi App</h1>
           <h1 className="text-4xl font-bold leading-[1.3]">In Greece</h1>
           <h2 className="text-2xl font-bold leading-[1.3] pt-5 pr-[50%]">
             Download the app and book a ride in seconds

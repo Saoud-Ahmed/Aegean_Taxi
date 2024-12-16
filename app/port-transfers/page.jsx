@@ -14,7 +14,7 @@ import PickUpIcon from "./assets/pickupicon.png";
 import DestinationIcon from "./assets/destination-icon.png";
 import Call from "./assets/call.svg";
 import WhatsApp from "./assets/whatsapp.svg";
-import TaxiCat from "../components/TaxiCat/TaxiCat";
+//import TaxiCat from "../components/TaxiCat/TaxiCat";
 
 // Dynamic imports for components to reduce initial bundle size
 

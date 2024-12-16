@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import ChildSeatIcon from "./assets/childseat.png";
 import SIMIcon from "./assets/localSIM.png";
-import beach from './assets/beach.png';
+//import beach from './assets/beach.png';
 export default function AdditionalServices() {
   const cards = [
     {

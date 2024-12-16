@@ -21,7 +21,9 @@
     "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
+    "@types/bn.js": "^5.1.6",
     "@types/node": "^20",
+    "@types/pbkdf2": "^3.1.2",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.20",

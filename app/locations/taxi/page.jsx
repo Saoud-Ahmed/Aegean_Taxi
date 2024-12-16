@@ -79,10 +79,10 @@ const LocationPage = () => {
      
       {/* Header and Text Section */}
       <div
-        className="relative bg-cover bg-center  "
+        className="relative bg-cover bg-center  map"
         style={{
           backgroundImage: `url(${Background.src})`,
-          height: "50vh",
+          height: "320px",
         }}
       >
         {/* Header */}
@@ -126,8 +126,14 @@ const LocationPage = () => {
           <h1 className="text-4xl font-bold leading-[1.3]">taxi app</h1>
         </div>
 
-        <div className="relative mt-10 overflow-hidden p-[2px] rounded-t-3xl rounded-b-3xl bg-gradient-to-r from-[#49F352] via-blue-500 to-[#3C00FF] mask-image-[linear-gradient(to top, black, transparent),  linear-gradient(to bottom, black, transparent)] mask-repeat-no-repeat mask-size-[100%_20px, 100%_20px] car_overlay">
-          <div className="rounded-t-3xl rounded-b-3xl bg-[#F5F5F7]">
+        <div
+          className="relative mt-10 overflow-hidden p-[2px] bg-black rounded-t-3xl mask-image-[black] mask-repeat-no-repeat car_overlay"
+          style={{
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)'  // Custom shadow
+          }}
+        >
+
+          <div className="rounded-t-3xl bg-[#F5F5F7] shadow-lg">
             {/* Input Fields Section */}
             <div className="mx-8 pt-6 rounded-xl field_inputs">
               <div className="relative flex flex-col gap-4">
@@ -215,7 +221,15 @@ const LocationPage = () => {
              
           </div>
         </div>
-        
+        <div className="text-center m-8">
+          <h2 className="text-2xl text-gray-600 font-bold">
+            The fastest, cheapest<br />
+            and easiest way to book <br />
+            your taxi in Mykonos
+          </h2>
+        </div>
+
+
         <WhyBookSection />
         <TaxiCategories />
         <BookingOptionsSection/>

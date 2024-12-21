@@ -87,21 +87,21 @@ const Slider = ({ cars, transitionDuration = "0.3s" }) => {
           <div
             key={index}
             ref={index === 0 ? firstSlideRef : null}
-            className="relative flex-shrink-0 w-[35%] h-60 car_height"
+            className="relative flex-shrink-0 w-[40%] h-60 car_height"
           >
-            <div className="relative mt-8 border border-black border-[1px] rounded-3xl bg-[#E2E6E9] shadow-lg p-4 z-0 car_card">
+            <div className="relative mt-8 border border-black border-[1px] rounded-xl bg-[#E2E6E9] shadow-lg p-4 z-0 car_card">
               <div className="absolute w-full -top-5 left-0 flex justify-center">
                 <Image
                   src={car.imageSrc}
                   alt={`${car.name} taxi`}
-                  width={100}
+                  width={85}
                   height={70}
                   objectFit="cover"
                   priority
                   className="car_images"
                 />
               </div>
-              <h2 className="text-lg pt-8 font-bold text-left car_name">{car.name}</h2>
+              <h2 className="text-lg pt-4 font-bold text-left car_name">{car.name}</h2>
               <div className="text-sm text-gray-600">
                 <div className="flex items-center gap-5">
                   <div className="flex items-center gap-1">

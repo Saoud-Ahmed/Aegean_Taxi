@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import NavArrow from "./assets/arrow.svg";
 import hotel from './assets/hotel.png'
 import plane from './assets/plane.png'
+import arrow from "./assets/arrowpartner.svg";
 
 export default function Partner() {
     const cards = new Array(10).fill(null).map((_, index) => ({
@@ -271,7 +272,11 @@ export default function Partner() {
 </div>
         <div className="flex justify-start mt-6 ml-4">
         <button className="flex justify-center items-center px-6 py-2 bg-[#004080] text-white text-lg font-semibold rounded-3xl hover:bg-gray-800">
-            <span className="mr-2">Find out more about us</span>
+            <span className="mr-2">Go to partners</span><Image 
+                                                              src={arrow} 
+                                                              alt="Right arrow" 
+                                                              className="relative w-4 h-4 transform translate-x-2" 
+                                                            />
         </button>
         </div>
         </div>

@@ -1,139 +1,124 @@
 "use client";
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useReducer } from "react";
 import TaxiImage from "./assets/img2.png";
 import IconImg from "./assets/icon_img.png";
-import Arrow from "./assets/blue_arrow.png"; 
-import FrontArrow from "./assets/w-front-arrow.png"; 
+import Arrow from "./assets/blue_arrow.png";
+import FrontArrow from "./assets/w-front-arrow.png";
 
 export default function WhyBookSection() {
   const cards = [
-    {
-      imgsrc: IconImg,
-      heading: "Low price guarantee",
-      text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service.",
-    },
-    {
-      imgsrc: IconImg,
-      heading: "24/7 customer support",
-      text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service.",
-    },
-    {
-      imgsrc: IconImg,
-      heading: "Low price guarantee",
-      text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service.",
-    },
-    {
-      imgsrc: IconImg,
-      heading: "24/7 customer support",
-      text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service.",
-    },
-    {
-      imgsrc: IconImg,
-      heading: "Low price guarantee",
-      text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service.",
-    },
-    {
-      imgsrc: IconImg,
-      heading: "24/7 customer support",
-      text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service.",
-    },
+    { imgsrc: IconImg, heading: "Low price guarantee", text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service." },
+    { imgsrc: IconImg, heading: "24/7 customer support", text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service." },
+    { imgsrc: IconImg, heading: "Low price guarantee", text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service." },
+    { imgsrc: IconImg, heading: "24/7 customer support", text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service." },
+    { imgsrc: IconImg, heading: "Low price guarantee", text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service." },
+    { imgsrc: IconImg, heading: "24/7 customer support", text: "Our Mykonos taxi team is available 24/7 to offer a more personalized service." },
   ];
 
   const scrollRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef(null);
+  const activeIndexRef = useRef(0);
+  const touchStartRef = useRef(null);
+  const touchMoveRef = useRef(null);
 
-  // Handle drag functionality for desktop
-  const handleMouseDown = (e) => {
-    if (!scrollRef.current) return;
+  // Use reducer for manual re-render triggering (rarely used)
+  const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
-    const startX = e.clientX;
-    const scrollLeft = scrollRef.current.scrollLeft;
+  const CARD_WIDTH = 215;
+  const SWIPE_THRESHOLD = 50;
 
-    const handleMouseMove = (e) => {
-      if (!scrollRef.current) return;
-      const x = e.clientX;
-      const walk = (startX - x) * 2; // 2 is the scroll speed multiplier
-      scrollRef.current.scrollLeft = scrollLeft + walk;
-    };
-
-    const handleMouseUp = () => {
-      if (!scrollRef.current) return;
-      scrollRef.current.removeEventListener("mousemove", handleMouseMove);
-      scrollRef.current.removeEventListener("mouseup", handleMouseUp);
-      // Calculate and update active index
-      updateActiveIndex();
-    };
-
-    scrollRef.current.addEventListener("mousemove", handleMouseMove);
-    scrollRef.current.addEventListener("mouseup", handleMouseUp);
+  const scrollToIndex = (index) => {
+    if (!scrollRef.current || !containerRef.current) return;
+  
+    const containerWidth = containerRef.current.clientWidth;
+    const centerOffset = (containerWidth - CARD_WIDTH) / 2;
+  
+    // Wrap around the index if it goes out of bounds
+    const wrappedIndex = (index + cards.length) % cards.length;
+  
+    // Scroll position considering wrapping behavior
+    const scrollPosition = wrappedIndex * CARD_WIDTH - centerOffset;
+  
+    scrollRef.current.scrollTo({
+      left: scrollPosition,
+      behavior: "smooth",
+    });
+  
+    // Update active index without React state
+    const previousIndex = activeIndexRef.current;
+    activeIndexRef.current = wrappedIndex;
+  
+    // Update class for animation
+    const cardElements = Array.from(scrollRef.current.children);
+    cardElements.forEach((card, cardIndex) => {
+      if (cardIndex === activeIndexRef.current) {
+        card.classList.add("opacity-100", "scale-105");
+        card.classList.remove("opacity-50", "scale-100");
+      } else {
+        card.classList.add("opacity-50", "scale-100");
+        card.classList.remove("opacity-100", "scale-105");
+      }
+    });
+  
+    // Force re-render for dots/buttons if necessary
+    if (previousIndex !== activeIndexRef.current) forceUpdate();
   };
+  
 
-  // Handle touch functionality for mobile
   const handleTouchStart = (e) => {
-    if (!scrollRef.current) return;
-
-    const startX = e.touches[0].clientX;
-    const scrollLeft = scrollRef.current.scrollLeft;
-
-    const handleTouchMove = (e) => {
-      if (!scrollRef.current) return;
-      const x = e.touches[0].clientX;
-      const walk = (startX - x) * 2; // 2 is the scroll speed multiplier
-      scrollRef.current.scrollLeft = scrollLeft + walk;
-    };
-
-    const handleTouchEnd = () => {
-      if (!scrollRef.current) return;
-      scrollRef.current.removeEventListener("touchmove", handleTouchMove);
-      scrollRef.current.removeEventListener("touchend", handleTouchEnd);
-      // Calculate and update active index
-      updateActiveIndex();
-    };
-
-    scrollRef.current.addEventListener("touchmove", handleTouchMove);
-    scrollRef.current.addEventListener("touchend", handleTouchEnd);
+    touchStartRef.current = e.touches[0].clientX;
+    touchMoveRef.current = e.touches[0].clientX;
   };
 
-  // Update active index based on scroll position
-  const updateActiveIndex = () => {
-    if (!scrollRef.current) return;
-
-    const cardWidth = 240; // Approximate width of each card (w-60 is 240px)
-    const scrollPosition = scrollRef.current.scrollLeft;
-    const newIndex = Math.round(scrollPosition / cardWidth);
-    setActiveIndex(Math.min(Math.max(newIndex, 0), cards.length - 1));
+  const handleTouchMove = (e) => {
+    touchMoveRef.current = e.touches[0].clientX;
   };
 
-  // Add scroll event listener to update active index
-  useEffect(() => {
-    const currentScrollRef = scrollRef.current;
-    if (currentScrollRef) {
-      const handleScroll = () => {
-        updateActiveIndex();
-      };
-
-      currentScrollRef.addEventListener("scroll", handleScroll);
-      return () => {
-        currentScrollRef.removeEventListener("scroll", handleScroll);
-      };
+  const handleTouchEnd = () => {
+    if (!touchStartRef.current || !touchMoveRef.current) return;
+  
+    const diffX = touchStartRef.current - touchMoveRef.current;
+    let newIndex = activeIndexRef.current;
+  
+    if (Math.abs(diffX) > SWIPE_THRESHOLD) {
+      // Calculate new index for both left and right swipes
+      newIndex = diffX > 0 
+        ? newIndex + 1  // Swipe right (move to the next card)
+        : newIndex - 1; // Swipe left (move to the previous card)
+  
+      // Wrap around if reaching the first or last card
+      if (newIndex < 0) newIndex = cards.length - 1;  // Move to the last card if at the start
+      if (newIndex >= cards.length) newIndex = 0;  // Move to the first card if at the end
     }
-  }, []);
+  
+    scrollToIndex(newIndex);
+  
+    touchStartRef.current = null;
+    touchMoveRef.current = null;
+  };
+  
+  // Modify the extended cards to create a circular effect with actual card 6 visible
+  const extendedCards = [
+   
+    ...cards,
+    cards[0],  // Actual card 1 at the end
+    cards[1],   // Next card for smooth transition
+    cards[2],
+    cards[3],
+    cards[4],
+    cards[5]
+  ];
 
   return (
     <section className="py-20 flex flex-col bg-[#F1F3FB]" aria-labelledby="why-book-heading">
       <div className="px-8">
-        {/* Heading Section */}
         <header className="text-left pb-4">
-          <h1
-            id="why-book-heading"
-            className="text-3xl font-bold leading-[1.1] text-[#0000FF]"
-          >
+          <h1 id="why-book-heading" className="text-3xl font-bold leading-[1.1] text-[#0000FF]">
             Why book your Mykonos taxi with Aegean Taxi
           </h1>
         </header>
 
-        {/* Image Section */}
         <div className="flex justify-end">
           <div className="w-full">
             <Image
@@ -146,22 +131,22 @@ export default function WhyBookSection() {
         </div>
       </div>
 
-      {/* Slider Section */}
-      <div className="mt-10">
+      <div ref={containerRef} className="overflow-hidden">
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto mt-0 cursor-grab scroll-smooth scrollbar-hide"
-          onMouseDown={handleMouseDown}
+          className="flex gap-4 overflow-x-hidden pt-10 pb-10 scroll-smooth no-scrollbar"
           onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
           aria-label="Why choose us cards"
         >
-          {cards.map((card, index) => (
+          {extendedCards.map((card, index) => (
             <article
               key={index}
-              className="relative flex-shrink-0 w-40 h-60 ml-2"
+              className={`relative flex-shrink-0 w-[200px] h-60 ${index === 0 ? 'ml-4' : ''} ${index === extendedCards.length - 1 ? 'mr-4' : ''} transition-transform duration-300 ease-in-out`}
               aria-labelledby={`card-heading-${index}`}
             >
-              <div className="relative border border-black w-50 h-55 rounded-3xl bg-[#F5F5F7] shadow-lg p-3 pb-5 pl-3">
+              <div className="relative border border-black w-full h-full rounded-3xl bg-[#F5F5F7] shadow-lg p-3 pb-5 pl-3">
                 <div className="flex justify-left">
                   <Image
                     src={card.imgsrc}
@@ -179,49 +164,44 @@ export default function WhyBookSection() {
           ))}
         </div>
 
-              {/* Indicator Section */}
         <div className="flex justify-center mt-2 space-x-4">
           {cards.map((_, index) => (
             <button
               key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 ${
-                activeIndex === index ? "bg-black" : "bg-gray-300"
+              onClick={() => scrollToIndex(index)}
+              className={`w-4 h-4 rounded-full transition-all duration-300 ease-in-out focus:outline-none ${
+                activeIndexRef.current === index ? "bg-black" : "bg-gray-300"
               }`}
               aria-label={`Go to slide ${index + 1}`}
-              aria-pressed={activeIndex === index}
+              aria-pressed={activeIndexRef.current === index}
             />
           ))}
         </div>
-
-        {/* Links Section */}
         <div className="flex flex-col items-center mx-10">
-  <div className="flex justify-center mt-5">
-    <button
-      className="flex items-center gap-2 px-6 py-2 bg-[#006FE1] hover:bg-blue-800 text-white font-semibold rounded-3xl transition-all duration-300 text-sm sm:text-base"
-      aria-label="Find out more about Mykonos"
-    >
-      <span className="whitespace-nowrap">Find out more about Mykonos</span>
-      <Image
-        src={FrontArrow}
-        alt="Arrow Icon"
-        width={16} // Reduced size for responsiveness
-        height={16}
-        className="object-contain"
-      />
-    </button>
-  </div>
+          <div className="flex justify-center mt-5">
+            <button
+              className="flex items-center gap-2 px-6 py-2 bg-[#004080] hover:bg-blue-800 text-white font-semibold rounded-3xl transition-all duration-300 text-sm sm:text-base"
+              aria-label="Find out more about Mykonos"
+            >
+              <span className="whitespace-nowrap">Find out more about Mykonos</span>
+              <Image
+                src={FrontArrow}
+                alt="Arrow Icon"
+                width={16}
+                height={16}
+                className="object-contain"
+              />
+            </button>
+          </div>
 
-
-          {/* Secondary Link with Icon */}
           <div className="flex items-center justify-center mt-4">
-             <a
-            href="#"
-            className="block text-center text-blue-800 underline hover:text-blue-900"
-            aria-label="Find us in Mykonos"
-          >
-            Find us in Mykonos
-          </a>
+            <a
+              href="#"
+              className="block text-center text-blue-800 underline hover:text-blue-900"
+              aria-label="Find us in Mykonos"
+            >
+              Find us in Mykonos
+            </a>
 
             <Image
               src={Arrow}

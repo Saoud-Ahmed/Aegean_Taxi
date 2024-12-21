@@ -69,13 +69,13 @@ const Footer = () => {
 </div>
 
 
-          {/* Divider Line */}
+         
           <div className="w-full border-t border-gray-300 mt-6 mb-6"></div>
 
           {/* Sitemap Section */}
           <h3 className="text-[#006FE1] font-bold text-lg">Sitemap</h3>
           <div className="grid grid-cols-2 gap-8 w-full mt-4">
-            {/* Left Column */}
+           
             <div className="space-y-3">
               <a href="#" className="block text-base font-bold hover:underline">
                 Home
@@ -100,7 +100,7 @@ const Footer = () => {
               </a>
             </div>
 
-            {/* Right Column */}
+
             <div className="space-y-3">
               <a href="#" className="block text-base font-bold hover:underline">
                 About us
@@ -124,7 +124,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider Line */}
         <div className="w-full border-t border-gray-300 mt-6 mb-6"></div>
 
                 {/* Locations Section */}
@@ -333,7 +332,7 @@ const Footer = () => {
             </div>
 
 
-            {/* Divider Line */}
+            
           <div className="w-full border-t border-white mt-6 mb-6 pt-6">
                             <div className="flex flex-col items-center bg-white text-black space-y-3">
                         {/* Contact Us Button */}

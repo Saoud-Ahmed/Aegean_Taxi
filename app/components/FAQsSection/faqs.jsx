@@ -77,7 +77,7 @@ const FAQs = () => {
                         <button className="flex justify-center items-center mx-10 w-full py-3 bg-black text-white text-lg font-semibold rounded-2xl hover:bg-gray-800">
                                 <span className="mr-2">Read More</span>
                                 <Image
-                                    src={ArrowBtn} // Replace with the actual path to your arrow image
+                                    src={ArrowBtn} 
                                     alt="Arrow Icon"
                                     className="w-5 h-4 ml-2"
                                 />

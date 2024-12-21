@@ -104,9 +104,9 @@ const AirportTransfers = () => {
 
           {/* Main Section */}
           <main className="mx-[5%] flex flex-col my-auto space-y-[5%]">
-          <h1 className="text-2xl md:text-3xl text-3xl text-white font-bold text-left">
-                Airport transfers for all airports in Greece
-              </h1>
+            <h1 className="text-2xl md:text-3xl text-3xl text-white font-bold text-left">
+              Airport transfers for all airports in Greece
+            </h1>
             <div className="flex flex-col items-center text-left text-white space-y-[3%]">
               
               

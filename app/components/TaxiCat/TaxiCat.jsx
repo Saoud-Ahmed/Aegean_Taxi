@@ -99,7 +99,7 @@ const TaxiCat = () => {
 
       {/* Slider Section */}
       <div className='p-2 pl-0   border border-black rounded-2xl'>
-      <div className="w-full h-[400px] overflow-y-scroll scrollbar-visible scrollbar scrollbar-thumb-gray-300   px-4 ">
+      <div className="w-full h-[400px] overflow-y-scroll scrollbar-custom scrollbar-visible p-4 pt-2 px-4">
         {categories.map((category, index) => (
           <div
             key={index}

@@ -56,61 +56,61 @@ const TaxiCategories = () => {
       </p>
 
       {/* Slider Section */}
-      <div className='p-2 pl-0   border border-black rounded-2xl'>
-      <div className="w-full h-[400px] overflow-y-scroll scrollbar-visible scrollbar scrollbar-thumb-gray-300 p-4 pt-2 px-4 ">
-        {categories.map((category, index) => (
-          <div
-            key={index}
-            className="flex items-center p-4 bg-[#F5F5F7] rounded-3xl shadow-md mb-4 h-[150px] "
-          >
-            {/* Left Side */}
-            <div className="flex flex-col w-[60%]">
-              <div className="flex justify-between items-center text-sm">
-                <h2 className="text-[15px] font-semibold text-blue-900  ">
-                  {category.name}
-                </h2>
-
-                <div className='flex mx-1 '>
-                  <div className="flex items-center mr-1">
-                    <Image
-                      src={PersonIcon}
-                      alt="person"
-                      className="w-3 h-3 mr-[2px]"
-                    />
-                    {category.persons}
-                  </div>
-                  <div className="flex items-center">
-                    <Image
-                      src={BagIcon}
-                      alt="luggage"
-                      className="w-3 h-3 mr-[2px]"
-                    />
-                    {category.luggage}
-                  </div>
-                </div>
+      <div className='p-2 pl-0 border border-black rounded-2xl'>
+  <div className="w-full h-[400px] overflow-y-scroll scrollbar-custom scrollbar-visible p-4 pt-2 px-4">
+    {categories.map((category, index) => (
+      <div
+        key={index}
+        className="flex items-center p-4 bg-[#F5F5F7] rounded-3xl shadow-md mb-4 h-[150px]"
+      >
+        {/* Left Side */}
+        <div className="flex flex-col w-[60%]">
+          <div className="flex justify-between items-center text-sm">
+            <h2 className="text-[15px] font-semibold text-blue-900">
+              {category.name}
+            </h2>
+            <div className="flex mx-1">
+              <div className="flex items-center mr-1">
+                <Image
+                  src={PersonIcon}
+                  alt="person"
+                  className="w-3 h-3 mr-[2px]"
+                />
+                {category.persons}
               </div>
-
-              <p className="text-sm text-gray-600 mr-1 mt-1">{category.description}</p>
-              
-              <p className="text-md text-black mt-1">
-                <span className="font-med">From </span>
-                <span className="font-bold text-black">€{category.price}</span>
-              </p>
-            </div>
-
-            {/* Right Side */}
-            <div className="flex flex-col items-center  w-[40%]">
-              <Image
-                src={category.imageSrc}
-                alt={category.name}
-                className="w-[100px] h-[70px] object-contain"
-              />
-              <p className="text-sm text-center text-black leading-[1]">{category.imgDescription}</p>
+              <div className="flex items-center">
+                <Image
+                  src={BagIcon}
+                  alt="luggage"
+                  className="w-3 h-3 mr-[2px]"
+                />
+                {category.luggage}
+              </div>
             </div>
           </div>
-        ))}
+
+          <p className="text-sm text-gray-600 mr-1 mt-1">{category.description}</p>
+          
+          <p className="text-md text-black mt-1">
+            <span className="font-med">From </span>
+            <span className="font-bold text-black">€{category.price}</span>
+          </p>
+        </div>
+
+        {/* Right Side */}
+        <div className="flex flex-col items-center w-[40%]">
+          <Image
+            src={category.imageSrc}
+            alt={category.name}
+            className="w-[100px] h-[70px] object-contain"
+          />
+          <p className="text-sm text-center text-black leading-[1]">{category.imgDescription}</p>
+        </div>
       </div>
-      </div>
+    ))}
+  </div>
+</div>
+
 
       {/* Action Buttons */}
 <div className="flex flex-row justify-between items-center mt-6 space-x-2">

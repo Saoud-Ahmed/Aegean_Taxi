@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Head from "next/head";
-
+import "./style.css";
 // Import all assets
 import HamgurgerIcon from "./assets/hamburgerIcon.svg";
 import Logo from "./assets/logo.svg";
@@ -101,9 +101,9 @@ const LandingPage = () => {
               Aegean Taxi 
             </h1>
           {/* Text Section */}
-          <div className="flex-grow flex flex-col justify-center px-6">
-            <p className="text-xl md:text-2xl font-bold text-[rgba(0,70,139,0.86)] max-w-xs mt-4 w-[50%]" >
-              The best taxi app for the Greek islands
+          <div className="flex-grow flex flex-col justify-center px-6 relative bottom-10">
+            <p className="text-2xl md:text-2xl font-bold text-[rgba(0,64,128,1)] max-w-xs mt-4 w-[50%]" >
+              The best taxi <br></br> app for the <br></br> Greek islands
             </p>
           </div>
 
@@ -191,7 +191,7 @@ const LandingPage = () => {
 
   {/* Main Button */}
   <button 
-    className="flex items-center mx-4 mb-auto justify-center w-full h-12 bg-[#040080] text-white rounded-xl font-bold hover:bg-gray-600"
+    className="flex items-center mx-4 mb-auto justify-center w-full h-12 bg-[#004080] text-white rounded-xl font-bold hover:bg-gray-600"
     aria-label="See prices and book taxi"
   >
     <span className="text-md">See prices & book</span>

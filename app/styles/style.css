@@ -1,4 +1,4 @@
-@media (max-height: 636px) {
+@media (max-height: 786px) {
     .car_images{
         width: 85px;
         object-fit: cover;
@@ -19,7 +19,8 @@
 
     .rod{
         position: absolute;
-        top: 14px;
+        top: 24px;
+       height: 3.1rem;
     }
 
     .field_inputs{
@@ -58,7 +59,7 @@
 }
 
 
-@media (min-height: 636px) and (max-height: 746px) {
+@media (min-height: 786px) and (max-height: 841px) {
     .car_images{
         width: 95px;
         object-fit: cover;
@@ -79,7 +80,8 @@
 
     .rod{
         position: absolute;
-        top: 20px;
+        top: 25px;
+        height:3rem;
     }
 
     .field_inputs{
@@ -91,17 +93,17 @@
     }
 
     .car_call{
-        width: 35px;
+        width: 45px;
 
     }
 
     .car_whatsapp{
-        width: 40px;
+        width: 45px;
 
     }
     .car_seeprices{
-        height: 2.5rem;
-        margin-top: 0.2rem;
+        height: 3rem;
+        margin: 0px !important;
     }
 
     .car_overlay{
@@ -117,15 +119,15 @@
     }
 }
 
-@media (min-height: 747px) and (max-height: 786px) {
+@media (min-height: 842px) and (max-height: 859px) {
     
 
     .car_name{
-        padding-top: 1.5rem;
+        padding-top: 1rem;
     }
 
     .car_height{
-        height: 12.5rem;
+        height: 12rem;
     }
 
     .car_input{
@@ -135,29 +137,22 @@
 
     .rod{
         position: absolute;
-        top: 20px;
+        top: 30px;
+        height:3.2rem;
     }
 
     .field_inputs{
-        padding-top: 2.3rem;
+        padding-top: 1.5rem;
     }
 
     .car_card{
-        margin-top: 2.3rem;
+        margin-top: 1.5rem;
     }
 
-    .car_call{
-        width: 35px;
-
-    }
-
-    .car_whatsapp{
-        width: 40px;
-
-    }
+    
     .car_seeprices{
-        height: 2.5rem;
-        margin-top: 1.3rem;
+      
+        margin-top: 0.8rem;
     }
 
 
@@ -166,24 +161,54 @@
     }
 }
 
-@media (min-height: 787px){
- 
-    .car_seeprices{
+@media (min-height: 860px) and (max-height: 900px) {
+    .car_images{
+        width: 85px;
+        object-fit: cover;
+    }
 
-        margin-top: 0.5rem;
+    .car_name{
+        padding-top: 1rem;
+    }
+
+    .car_height{
+        height: 13rem;
+    }
+
+    .car_input{
+        padding: 1rem;
+        padding-left: 3rem;
+    }
+
+    .rod{
+        position: absolute;
+        top: 33px;
+       height: 4.1rem;
+    }
+
+    .field_inputs{
+        padding-top: 2rem;
+    }
+
+    .car_card{
+        margin-top: 1.5rem;
+    }
+
+   
+    .car_seeprices{
+        
+        margin-top: 0.8rem;
+    }
+
+    .car_overlay{
+        margin-top: 1.25rem;
     }
 
     .car_text_mykonos{
-        margin: 5rem 1.5rem;
+        margin: 1.25rem;
     }
 
-    .map{
-        height: 400px !important;
-        object-fit: contain;
-        width: auto;
-        background-position: center !important;
-        background-position-x: right !important;
-        
+    .call_mykonos{
+        height: 6rem;
     }
 }
-  

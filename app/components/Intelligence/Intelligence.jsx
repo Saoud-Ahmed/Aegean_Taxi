@@ -272,7 +272,7 @@ const Intellingence = () => {
     >
       {/* Heading Section */}
       <div className="text-left  px-4">
-  <h1 className="text-[28px] mb-4 font-bold leading-[1.1] bg-clip-text text-[#0D00FF]">
+  <h1 className="text-[23px] mb-4 font-bold leading-[1.3] bg-clip-text text-[#0D00FF]">
     Aegean Taxi <strong>Intelligence.</strong><br />
     <strong>Powered</strong> by <strong>Ai</strong>.<br />
     Run by Humans.

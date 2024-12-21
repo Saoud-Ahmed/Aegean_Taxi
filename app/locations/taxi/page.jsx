@@ -3,7 +3,7 @@ import Head from "next/head";
 import "../../styles/style.css"
 import HamgurgerIcon from "./assets/hamburgerIcon.svg";
 import Logo from "./assets/logo.svg";
-import AppleStore from "./assets/apple.svg";
+
 import Call from "./assets/call.svg";
 import WhatsApp from "./assets/whatsapp.svg";
 import StandardCar from "./assets/standard-car.svg";
@@ -12,7 +12,7 @@ import MiniVan from "./assets/mini-bus.svg";
 import Background from "./assets/background.png";
 import PickUpIcon from "./assets/pickupicon.svg";
 import DestinationIcon from "./assets/destination-icon.svg";
-
+import appleLogoDark from "./assets/appleblack.svg";
 
 import WhyBookSection from "../../components/Why_Book_Section/WhyBookSection";
 import TaxiCategories from "../../components/TaxiCategoriesSection/TaxiCategories";
@@ -106,11 +106,11 @@ const LocationPage = () => {
             />
           </div>
           <button 
-            className="ml-auto h-10 bg-white  py-2 rounded-xl flex items-center border border-black"
+            className="ml-auto h-10 py-2 rounded-xl flex items-center"
             aria-label="Download on App Store"
           >
             <Image 
-              src={AppleStore} 
+              src={appleLogoDark} 
               alt="Download on App Store" 
               className="w-full h-8" 
               width={100} 
@@ -120,7 +120,7 @@ const LocationPage = () => {
         </header>
 
         {/* Text Section */}
-        <div className="mx-4 my-10 text-[#174FCD] car_text_mykonos">
+        <div className="mx-4 my-10 text-[#004080] car_text_mykonos">
           <h1 className="text-4xl font-bold leading-[1.3] ">Your</h1>
           <h1 className="text-4xl font-bold leading-[1.3]">Mykonos</h1>
           <h1 className="text-4xl font-bold leading-[1.3]">taxi app</h1>
@@ -191,14 +191,14 @@ const LocationPage = () => {
                 <Image 
                   src={Call} 
                   alt="Phone icon" 
-                  width={46} 
+                  width={56} 
                   height={36} 
                   className="mb-1 car_call" 
                 />
                 <span className="font-medium text-[10px]">Call</span>
               </button>
               <button 
-                className="flex items-center mt-1 justify-center w-80 h-12 bg-[#174FCD] text-white rounded-xl font-bold hover:bg-blue-600 car_seeprices"
+                className="flex items-center mt-1 justify-center w-80 h-14 bg-[#004080] text-white rounded-xl font-bold hover:bg-blue-600 car_seeprices"
                 aria-label="See prices and book taxi"
               >
                 <span className="text-md">See prices & book</span>
@@ -210,7 +210,7 @@ const LocationPage = () => {
                 <Image 
                   src={WhatsApp} 
                   alt="WhatsApp contact icon" 
-                  width={50} 
+                  width={56} 
                   height={36} 
                   className="mb-1 car_whatsapp" 
                 />
